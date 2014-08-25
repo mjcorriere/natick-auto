@@ -1,0 +1,41 @@
+html, body {
+	font-family: arial;
+}
+
+#menu {
+	float: left;
+	height: 400px;
+	width: 275px;
+	border: 1px solid #CCC;
+	overflow-y: auto;
+}
+
+table {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0px 5px;
+}
+
+td {
+	padding: 5px 0px;
+}
+
+.hovered {
+	background-color: #EEF;
+}
+
+tbody tr:hover {
+	background-color: #EEF;
+}
+
+tbody tr button {
+	visibility: hidden;
+}
+
+tbody tr:hover button {
+	visibility: visible;
+}
+
+.canvas-container {
+	float: left;
+}

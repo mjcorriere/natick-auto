@@ -1,0 +1,11 @@
+<div class='canvas-container'>
+	<svg id='canvas' width='600' height='400'>
+		<g ng-repeat='square in squares'>
+			<rect x='{{square.x}}' y='{{square.y}}'
+				width='{{square.width}}' height='{{square.width}}'
+				style='fill: {{square.color}}'
+				ng-mouseover='mousedOver(square)'
+				ng-mouseleave='mousedOut(square)'>
+		</g>
+	</svg>
+</div>
