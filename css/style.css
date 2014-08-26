@@ -1,8 +1,17 @@
 
 body {
-	padding-top: 70px; /* For fixed navbar */
+	padding-top: 53px; /* For fixed navbar */
 }
 
+.list-group-item h4, 
+	.list-group-item p {
+		margin-top: 0px;
+		margin-bottom: 0px;
+}
+
+.list-group-item .icon-2x {
+	font-size: 35px;
+}
 
 /**** Color Reference
  * #1ABC9C
