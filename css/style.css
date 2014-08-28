@@ -38,6 +38,11 @@ h5.job-due-date {
 	font-weight: normal;
 	line-height: 31px;
 }
+
+td.sample-no {
+	vertical-align: middle !important; /* Override Bootstrap alignment */
+	text-align: center;
+}
 /**** Color Reference
  * #1ABC9C
  * TURQUOISE
