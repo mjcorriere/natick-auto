@@ -21,11 +21,22 @@ body {
 
 .panel-title-lg {
 	font-size: 21px;
-	padding-top: 6px;
 }
 
 .checkbox-margin-30 {
 	margin-left: 30px;
+}
+
+h6.progress-bar-title {
+	font-size: 13px;
+	margin-top: -12px;
+}
+
+h5.job-due-date {
+	float: right;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 31px;
 }
 /**** Color Reference
  * #1ABC9C

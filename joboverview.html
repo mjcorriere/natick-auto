@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Natick Automation - Dashboard</title>
+    <title>Natick Automation - Job Overview</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Loading Bootstrap -->
@@ -28,7 +28,7 @@
             <span class='icon-bar'></span>
             <span class='icon-bar'></span>
           </button>
-          <a class='navbar-brand' href='#'>Natick Automation</a>
+          <a class='navbar-brand' href='#'>Job Overview</a>
         </div>
         <div class='navbar-collapse collapse'>
           <ul class='nav navbar-nav'>
@@ -44,27 +44,39 @@
       <!-- Magic goes here. i.e. AngularJS -->
       <div class='row'>
         <div class='panel panel-default'>
+          <div class='panel-body'>
+            <h5 class='job-due-date'>Due Sept 13th, 2014</h5>
+            <h4>Draper Laboratory</h4>
+            <p>Test information. Special instructions. Or customer information, or something else.</p>
+            <div class='progress'>
+              <div class='progress-bar progress-bar-warning' style='width: 33%'></div>
+            </div>
+            <h6 class='progress-bar-title'>33% Complete</h6>
+          </div>
           <div class='panel-heading clearfix'>
-            <h3 class='panel-title panel-title-lg pull-left'>Open Jobs</h3>
-            <a href="#" class="btn btn-sm btn-primary pull-right">
-                <span class="glyphicon glyphicon-flash"></span> Add Job
+            <h3 class='panel-title panel-title-lg pull-left'>Pending Tests</h3>
+            <a href="#" class="btn btn-xs btn-primary pull-right">
+                <span class="glyphicon glyphicon-flash"></span> Add Test
             </a>
           </div>
           <div class='list-group'>
-            <a href='joboverview.html' class='list-group-item'>
-              <span class="fui-arrow-right icon-2x pull-right"></span>
-              <h4>Draper Laboratory</h4>
-              <p>Break strength, Color fastness, Moisture absorption</p>
+            <a href='#' class='list-group-item'>
+              <span class="fui-arrow-right pull-right"></span>
+              <h4>Break Strength</h4>
             </a>
             <a href='#' class='list-group-item'>
-              <span class="fui-arrow-right icon-2x pull-right"></span>
-              <h4>Aperture Science</h4>
-              <p>Compressive strength, Rockwell hardness</p>
+              <span class="fui-arrow-right pull-right"></span>
+              <h4>Color Fastness</h4>
             </a>
+
+          </div>
+          <div class='panel-heading clearfix'>
+            <h3 class='panel-title panel-title-lg pull-left'>Completed Tests</h3>
+          </div>
+          <div class='list-group'>
             <a href='#' class='list-group-item'>
-              <span class="fui-arrow-right icon-2x pull-right"></span>
-              <h4>Vandelay Industries</h4>
-              <p>Latex resistance, Import/Export analysis</p>
+              <span class="fui-arrow-right pull-right"></span>
+              <h4>Moisture Absorption</h4>
             </a>
           </div>
         </div>
