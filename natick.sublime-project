@@ -1,0 +1,21 @@
+{
+	"folders":
+	[
+		{
+			"path": "/home/mjc/Webdev/draper/natick-auto",
+			"file_exclude_patterns":
+			[
+			    "*.sublime*",
+			    "*.bak",
+			    "*.ico",
+			    "*.sample",
+			    "*.swf",
+			    "*.tar",
+			    "*.tgz",
+			    "wp-*.php",
+			    "*.zip"
+			]
+		}
+	]
+
+}
