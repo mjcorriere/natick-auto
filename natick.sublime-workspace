@@ -7,11 +7,68 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 3421,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "testsrequired.html",
+			"settings":
+			{
+				"buffer_size": 3586,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "jobcreation.html",
+			"settings":
+			{
+				"buffer_size": 5742,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "joboverview.html",
+			"settings":
+			{
+				"buffer_size": 3843,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "breakstrength.html",
+			"settings":
+			{
+				"buffer_size": 11954,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "css/style.css",
+			"settings":
+			{
+				"buffer_size": 1526,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "css/wizard.css",
+			"settings":
+			{
+				"buffer_size": 989,
+				"line_ending": "Unix",
+				"name": ".wizard a {"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 75.0,
+		"height": 33.0,
 		"selected_items":
 		[
 			[
@@ -19,7 +76,7 @@
 				"Project: Add Folder"
 			]
 		],
-		"width": 392.0
+		"width": 422.0
 	},
 	"console":
 	{
@@ -36,12 +93,17 @@
 	},
 	"file_history":
 	[
+		"/home/mjc/.cache/.fr-xqCLu5/uncompressed/elements/step.css",
+		"/home/mjc/Webdev/flasktutorial/hello.py",
+		"/home/mjc/Webdev/flasktutorial/index.html",
+		"/home/mjc/Webdev/draper/natick-auto/css/flat-ui.css",
+		"/home/mjc/Webdev/draper/natick-auto/natick.sublime-project",
 		"/home/mjc/Documents/webdev/bower_components/angular/angular.js",
 		"/home/mjc/Documents/webdev/bower_components/angular/bower.json"
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -55,6 +117,18 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"customerName",
+			"<label",
+			"Use",
+			"use",
+			"Use",
+			"use",
+			"jobNo",
+			"myModal",
+			"-md",
+			"form-control",
+			"glyph",
+			"span"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -62,6 +136,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"notesModal"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -72,8 +147,205 @@
 	"groups":
 	[
 		{
+			"selected": 5,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"settings":
+					{
+						"buffer_size": 3421,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1845,
+								1845
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 623.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "testsrequired.html",
+					"settings":
+					{
+						"buffer_size": 3586,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2490,
+								2490
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "jobcreation.html",
+					"settings":
+					{
+						"buffer_size": 5742,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2301,
+								2301
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 153.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "joboverview.html",
+					"settings":
+					{
+						"buffer_size": 3843,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1696,
+								1696
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "breakstrength.html",
+					"settings":
+					{
+						"buffer_size": 11954,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1424,
+								1424
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1362.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "css/style.css",
+					"settings":
+					{
+						"buffer_size": 1526,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								967,
+								967
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 599.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "css/wizard.css",
+					"settings":
+					{
+						"buffer_size": 989,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								709,
+								709
+							]
+						],
+						"settings":
+						{
+							"auto_name": ".wizard a {",
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -110,7 +382,7 @@
 	"menu_visible": true,
 	"replace":
 	{
-		"height": 0.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -132,7 +404,7 @@
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": true,
-	"side_bar_width": 150.0,
+	"side_bar_visible": false,
+	"side_bar_width": 221.0,
 	"status_bar_visible": true
 }
