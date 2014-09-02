@@ -32,11 +32,32 @@ h6.progress-bar-title {
 	margin-top: -12px;
 }
 
+h4.job-number {
+	margin-top: 0px;
+}
+
 h5.job-due-date {
 	float: right;
+	margin-top: 0px;
 	font-size: 14px;
 	font-weight: normal;
 	line-height: 31px;
+}
+
+.job-info {
+	margin-left: 20px;
+}
+
+.job-info h5 {
+	display: inline-block;
+	margin: 0px;
+	margin-right: 25px;
+	font-size: 18px;
+}
+
+.job-info p {
+	display: inline-block;
+	margin: 0px;
 }
 
 td.sample-no {
