@@ -41,45 +41,85 @@
       </div>
     </div>
 
+<!--     <div class="wizard">
+        <a class='current'><span class="badge">1</span>
+        General Info</a>
+        <a><span class="badge">2</span>
+        Select Test</a>
+        <a><span class="badge">3</span>
+        Review</a>
+    </div> -->
     <div class="container">
       <!-- Magic goes here. i.e. AngularJS -->
+<!--       <div class='row'>
+        <div class='col-xs-3 step'>
+          <span class='badge'>1</span> &nbsp;General Info
+        </div>
+        <div class='col-xs-3 step'>
+          <span class='badge'>2</span> &nbsp;Select Tests
+        </div>
+        <div class='col-xs-3 step'>
+          <span class='badge'>3</span> &nbsp;Review entries
+        </div>
+        <div class='col-xs-3 step'>
+          <span class='badge'>4</span> &nbsp;Complete
+        </div>
+      </div> -->
       <div class='row'>
         <div class='col-xs-12 col-md-6'>
           <h4>General Information</h4>
           <form role='form'>
             <div class='form-group'>
-              <label for='jobNo'>Job Number</label>
-                <input type='text' class='form-control' id='jobNo' placeholder='Job #'>
-
+              <label class='margin-sm' for='jobNo'>Job Number</label>
+                <input type='text' class='form-control' id='jobNo' placeholder='00000145'>
             </div>
             <div class='form-group'>
-              <label for='customerName'>Customer Name</label>
-                <input type='text' class='form-control' id='customerName' placeholder='Customer Name'>
+              <label class='margin-sm' for='nomenclature'>Nomenclature</label>
+                <input type='text' class='form-control' id='nomenclature' placeholder='Cloth, 50/50 Nylon'>
+            </div>            
+            <div class='form-group'>
+              <label class='margin-sm' for='specification'>Specification</label>
+                <input type='text' class='form-control' id='specification' placeholder='MIL-C-1001'>
             </div>
             <div class='form-group'>
-              <label for='dueDate'>Due Date</label>
+              <label class='margin-sm' for='customerName'>Requestor</label>
+                <input type='text' class='form-control' id='customerName' placeholder='XYZ Materials Inc.'>
+            </div>
+            <div class='form-group'>
+              <label class='margin-sm' for='dueDate'>Due Date</label>
                 <input type='date' class='form-control' id='dueDate'>
             </div>
-            <h4>Tests Required</h4>
             <div class='form-group'>
-              <label class='checkbox checkbox-margin-30' for='checkbox1'>
-                <input type='checkbox' id='checkbox1' value='' data-toggle='checkbox'>
-                Break Strength - ASTM D 5043
-              </label>
-              <label class='checkbox checkbox-margin-30' for='checkbox2'>
-                <input type='checkbox' id='checkbox2' value='' data-toggle='checkbox'>
-                Visual Shade - AATCC Procedure 9
-              </label>
-              <label class="checkbox checkbox-margin-30" for="checkbox1">
-                <input type="checkbox" value="" id="checkbox1" data-toggle="checkbox">
-                Checkbox
-              </label>
+              <label class='margin-sm' for='manufacturer'>Manufacturer</label>
+                <input type='text' class='form-control' id='manufacturer' placeholder='Draper Laboratories'>
             </div>
-            <div class='pull-right'>
-              <a href='#' class='btn btn-warning'>Clear Form</a>
-              <a href='#' class='btn btn-primary'>Create Job</a>
+            <div class='form-group'>
+              <label class='margin-sm' for='contractNo'>Contract #</label>
+                <input type='text' class='form-control' id='contractNo' placeholder='ABC123X'>
+            </div>
+            <div class='form-group'>
+              <label class='margin-sm' for='use'>Use</label>
+                <input type='text' class='form-control' id='use' placeholder='Uniforms'>
+            </div>
+            <div class='form-group'>
+              <label class='margin-sm' for='workorder'>Work Order #</label>
+                <input type='text' class='form-control' id='workorder' placeholder='1002'>
+            </div>
+            <div class='form-group'>
+              <label class='margin-sm' for='sampleID'>Sample ID</label>
+                <input type='text' class='form-control' id='sampleID' placeholder='A'>
+            </div>
+            <div class='form-group'>
+              <label class='margin-sm' for='jobnotes'>Notes</label>
+                <textarea class='form-control' id='jobnotes' placeholder='Other notes, special instructions, etc'></textarea>
             </div>
           </form>
+          <div class='job-create-nav'>
+            <a href='#' class='btn btn-warning'>Clear Form</a>
+            <a href='testsrequired.html' class='btn btn-primary pull-right'>Select Tests 
+            &nbsp;<span class='fui-arrow-right'></span>
+            </a>
+          </div>
         </div>
       </div>
       <!-- /.row -->

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Natick Automation - Dashboard</title>
+    <title>Natick Automation - Job Creation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Loading Bootstrap -->
@@ -28,7 +28,7 @@
             <span class='icon-bar'></span>
             <span class='icon-bar'></span>
           </button>
-          <a class='navbar-brand' href='#'>Natick Automation</a>
+          <a class='navbar-brand' href='#'>Job Creation</a>
         </div>
         <div class='navbar-collapse collapse'>
           <ul class='nav navbar-nav'>
@@ -40,33 +40,37 @@
         </div>
       </div>
     </div>
+
     <div class="container">
       <!-- Magic goes here. i.e. AngularJS -->
       <div class='row'>
-        <div class='panel panel-default'>
-          <div class='panel-heading clearfix'>
-            <h3 class='panel-title panel-title-lg pull-left'>Open Jobs</h3>
-            <a href="jobcreation.html" class="btn btn-sm btn-primary pull-right">
-                <span class="glyphicon glyphicon-flash"></span> Add Job
+        <div class='col-xs-12 col-md-6'>
+          <h4>Tests Required</h4>
+          <form role='form'>
+            <div class='form-group'>
+              <label class='checkbox checkbox-lg checkbox-margin-30' for='checkbox1'>
+                <input type='checkbox' id='checkbox1' value='' data-toggle='checkbox'>
+                Break Strength - ASTM D 5043
+              </label>
+              <label class='checkbox checkbox-lg checkbox-margin-30' for='checkbox2'>
+                <input type='checkbox' id='checkbox2' value='' data-toggle='checkbox'>
+                Visual Shade - AATCC Procedure 9
+              </label>
+              <label class="checkbox checkbox-lg checkbox-margin-30" for="checkbox1">
+                <input type="checkbox" value="" id="checkbox1" data-toggle="checkbox">
+                Checkbox
+              </label>
+            </div>
+          </form>
+          <div class='job-create-nav'>
+            <a href='jobcreation.html' class='btn btn-default'>
+              <span class='fui-arrow-left'></span>
+              General Info
             </a>
-          </div>
-          <div class='list-group'>
-            <a href='joboverview.html' class='list-group-item'>
-              <span class="fui-arrow-right icon-2x pull-right"></span>
-              <h4>Draper Laboratory</h4>
-              <p>Break strength, Color fastness, Moisture absorption</p>
-            </a>
-            <a href='#' class='list-group-item'>
-              <span class="fui-arrow-right icon-2x pull-right"></span>
-              <h4>Aperture Science</h4>
-              <p>Compressive strength, Rockwell hardness</p>
-            </a>
-            <a href='#' class='list-group-item'>
-              <span class="fui-arrow-right icon-2x pull-right"></span>
-              <h4>Vandelay Industries</h4>
-              <p>Latex resistance, Import/Export analysis</p>
-            </a>
-          </div>
+            <a href='reviewjob.html' class='btn btn-primary pull-right'>Review Entries 
+            &nbsp;<span class='fui-arrow-right'></span>
+            </a> 
+          </div>         
         </div>
       </div>
       <!-- /.row -->
@@ -82,5 +86,9 @@
     <script src="js/flatui-radio.js"></script>
     <script src="js/jquery.tagsinput.js"></script>
     <script src="js/jquery.placeholder.js"></script>
+    <script type="text/javascript">
+      $(':checkbox').checkbox();
+
+    </script>
   </body>
 </html>
