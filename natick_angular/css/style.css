@@ -1,0 +1,165 @@
+
+body {
+	padding-top: 70px; /* For fixed navbar */
+}
+
+@media (max-width: 768px) {
+	body {
+		padding-top: 53px; /* For fixed navbar */
+	}
+}
+
+.list-group-item h4, 
+	.list-group-item p {
+		margin-top: 0px;
+		margin-bottom: 0px;
+}
+
+.list-group-item .icon-2x {
+	font-size: 35px;
+}
+
+.panel-title-lg {
+	font-size: 21px;
+}
+
+.checkbox-margin-30 {
+	margin-left: 30px;
+}
+
+h6.progress-bar-title {
+	font-size: 13px;
+	margin-top: -12px;
+}
+
+h4.job-number {
+	margin-top: 0px;
+}
+
+h5.job-due-date {
+	float: right;
+	margin-top: 0px;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 31px;
+}
+
+.job-info {
+	margin-left: 20px;
+}
+
+.job-info h5 {
+	display: inline-block;
+	margin: 0px;
+	margin-right: 25px;
+	font-size: 18px;
+}
+
+.job-info p {
+	display: inline-block;
+	margin: 0px;
+}
+
+td.sample-no {
+	vertical-align: middle !important; /* Override Bootstrap alignment */
+	text-align: center;
+}
+
+label.margin-sm {
+	line-height: 1.6;
+}
+
+.job-create-nav {
+	margin-bottom: 15px;
+}
+
+.step {
+	font-size: 15px;
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 4px;
+	padding-bottom: 5px;
+	background-color: #3498DB; /* Peter River */
+	color: #EEEEEE;
+}
+
+.step:first-child {
+	padding-left: 10px;
+}
+
+.step .badge {
+	margin-right: 5px;
+}
+
+.checkbox-lg {
+	font-size: 20px;
+	padding-left: 35px;
+}
+
+.checkbox-lg .icons {
+	line-height: 30px;
+	font-size: 25px;
+}
+
+
+/**** Color Reference
+ * #1ABC9C
+ * TURQUOISE
+ *
+ * #16A085
+ * GREEN SEA
+ *
+ * #2ECC71
+ * EMERALD
+ *
+ * #27AE60
+ * NEPHRITIS
+ *
+ * #3498DB
+ * PETER RIVER
+ *
+ * #2980B9
+ * BELIZE HOLE
+ *
+ * #9B59B6
+ * AMETHYST
+ *
+ * #8E44AD
+ * WISTERIA
+ *
+ * #34495E
+ * WET ASPHALT
+ *
+ * #2C3E50
+ * MIDNIGHT BLUE
+ *
+ * #F1C40F
+ * SUN FLOWER
+ *
+ * #F39C12
+ * ORANGE
+ *
+ * #E67E22
+ * CARROT
+ *
+ * #D35400
+ * PUMPKIN
+ *
+ * #E74C3C
+ * ALIZARIN
+ *
+ * #C0392B
+ * POMEGRANATE
+ *
+ * #ECF0F1
+ * CLOUDS
+ *
+ * #BDC3C7
+ * SILVER
+ *
+ * #95A5A6
+ * CONCRETE
+ *
+ * #7F8C8D
+ * ASBESTOS
+ */
