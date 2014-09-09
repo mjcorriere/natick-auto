@@ -4,7 +4,6 @@
 // Include the ngRoute (module / package / whatever ?)
 var natickModule = angular.module('natick', ['ngRoute']);
 
-
 natickModule.config(function($routeProvider, $locationProvider) {
 	$routeProvider
 		.when('/', {
@@ -47,5 +46,26 @@ natickModule.controller('breakstrengthController', ['$scope', function($scope) {
 }]);
 
 natickModule.controller('testsrequiredController', ['$scope', function($scope) {
+	$(':checkbox').checkbox();
+	$('label').on('click', function() {
+			
+			/* This onClick function appears to execute prior to whatever
+			 * the flat-ui-checkbox JS is doing. Therefore the value of 'checked'
+			 * lags behind the true value. For that reason the boolean logic here
+			 * appears to be inverted.
+			 *
+			 */
 
+			var name = $(this).attr('for');
+			var isChecked = $(this).children('#' + name).prop('checked');
+
+			var testOptions = $('.testoptions.' + name);
+
+			if(!isChecked) {
+				testOptions.css('display', 'block');
+			} else {
+				testOptions.css('display', 'none');
+			}
+
+	});
 }]);

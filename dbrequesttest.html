@@ -8,22 +8,27 @@
   <body>
 
     <script type='text/javascript'>
-    // Ajax request testing
-    var domainUrl = 'http://natick2.draper.com/';
+      // Ajax request testing
+      var domainUrl = 'http://natick2.draper.com/';
 
-    // Create a customer
-    // $.post() 
-    // jQuery.post( url [, data ] [, success ] [, dataType ] )
-    $.post( domainUrl + 'main/Customer/0',
-      {
-        'name': 'Aperture Science'
-      })
-      .done(function(data) {
-        console.log('Success: ' + data);
-      });
+      // Create a customer
+      // $.post() 
+      // jQuery.post( url [, data ] [, success ] [, dataType ] )
+      $.post( domainUrl + 'main/Customer/0/',
+        {
+          'name': 'Aperture Science'
+        })
+        .done(function(data) {
+          console.log('Success: ' + JSON.stringify(data, null, 2));
+        });
+
+      // $.get(domainUrl + 'main/Customer/1/')
+      //   .done(function(data) {
+      //     console.log('Success: ' + JSON.stringify(data, null, 2));
+      //   });
 
 
-    // DB Query
+      // DB Query
 
     </script>
   </body>
