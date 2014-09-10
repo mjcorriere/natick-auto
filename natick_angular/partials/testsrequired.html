@@ -5,29 +5,35 @@
       <div class='form-group'>
         <label class='checkbox checkbox-lg checkbox-margin-30' for='checkbox1'>
           <input type='checkbox' id='checkbox1' value='' data-toggle='checkbox'>
-          Break Strength - ASTM D 5043
+          Break Strength
         </label>
         <div class='testoptions checkbox1'>
-          <label>Select Pull Direction(s)</label>
-          <br>
-          <div class='btn-group'>
-            <button type='button' class='btn btn-sm btn-default'>Warp</button>
-            <button type='button' class='btn btn-sm btn-default'>Fill</button>
-          </div>
-          <br>
-          <label>Select Test Method</label>
-          <br>
-          <select>
-            <option>ASTM D 5043</option>
-            <option>ASTM D 5045</option>
-          </select>
+          <label>Pull Direction(s)</label>
+          <label class='checkbox' for='warp'>
+            <input type='checkbox' id='warp' value='' data-toggle='checkbox'>
+            Warp
+          </label>
+          <label class='checkbox' for='fill'>
+            <input type='checkbox' id='warp' value='' data-toggle='checkbox'>
+            Fill
+          </label>          
+
+          <label>Test Method</label>
+            <select name="info" class="mbn" style="display: none;">
+                <option value="0" selected="selected">Select Test Method</option>
+                <option value="1">ASTM D 5043</option>
+                <option value="2">ASTM D 5044</option>
+            </select>
         </div>
         <label class='checkbox checkbox-lg checkbox-margin-30' for='checkbox2'>
           <input type='checkbox' id='checkbox2' value='' data-toggle='checkbox'>
-          Visual Shade - AATCC Procedure 9
+          Visual Shade Evaluation
         </label>
         <div class='testoptions checkbox2'>
-          <input type='text'>
+          <label>Test Method</label>
+            <select name="info" class="mbn" style="display: none;">
+                <option value="1" selected='selected'>AATCC Procedure 9</option>
+            </select>          
         </div>        
         <label class="checkbox checkbox-lg checkbox-margin-30" for="checkbox3">
           <input type="checkbox" value="" id="checkbox3" data-toggle="checkbox">

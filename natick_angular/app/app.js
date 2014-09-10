@@ -47,6 +47,7 @@ natickModule.controller('breakstrengthController', ['$scope', function($scope) {
 
 natickModule.controller('testsrequiredController', ['$scope', function($scope) {
 	$(':checkbox').checkbox();
+	$("select[name='info']").selectpicker({style: 'btn-inverse'});
 	$('label').on('click', function() {
 			
 			/* This onClick function appears to execute prior to whatever

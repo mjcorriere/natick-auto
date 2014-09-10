@@ -111,6 +111,10 @@ label.margin-sm {
 	background-color: #EEE;
 }
 
+.testoptions label {
+	display: block;
+}
+
 
 /**** Color Reference
  * #1ABC9C
