@@ -47,7 +47,22 @@ natickModule.controller('breakstrengthController', ['$scope', function($scope) {
 
 natickModule.controller('testsrequiredController', ['$scope', function($scope) {
 	$(':checkbox').checkbox();
-	$("select[name='info']").selectpicker({style: 'btn-inverse'});
+	$("select")
+		.selectpicker({style: 'btn-default'})
+		.on('change', function() {
+			if (this.value !== '0') {
+				$(this).next()
+					.children('.btn.dropdown-toggle')
+					.addClass('btn-inverse')
+					.removeClass('btn-default');
+			} else {
+				$(this).next()
+					.children('.btn.dropdown-toggle')
+					.addClass('btn-default')
+					.removeClass('btn-inverse');
+			}
+		});
+
 	$('label').on('click', function() {
 			
 			/* This onClick function appears to execute prior to whatever
