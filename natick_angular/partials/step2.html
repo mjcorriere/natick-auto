@@ -1,0 +1,41 @@
+<div class='row'>
+  <div class='col-xs-12 col-md-6'>
+    <pre>{{ppFormData}}</pre>
+    <h4>Specimen Information</h4>
+    <form role='form' id='createJobForm'>
+      <div class='form-group'>
+        <label class='margin-sm' for='itemName'>Item Name</label>
+          <input type='text' class='form-control' id='itemName' name='itemName' ng-model='formData.itemName' placeholder='Helmet'>
+      </div>
+      <div class='form-group'>
+        <label class='margin-sm' for='itemType'>Item Type</label>
+          <input type='text' class='form-control' id='itemType' name ='itemType' ng-model='formData.itemType' placeholder=''>
+      </div>            
+      <div class='form-group'>
+        <label class='margin-sm' for='nomenclature'>Nomenclature</label>
+          <input type='text' class='form-control' id='nomenclature' name='nomenclature' ng-model='formData.nomenclature' placeholder='Cloth, 50/50 Nylon'>
+      </div>
+      <h4>Applicable Standard</h4>
+      <div class='form-group'>
+        <label class='margin-sm' for='standard'>Standard</label>
+          <input type='text' class='form-control' id='standard' name='standard' ng-model='formData.standard' placeholder='MIL-C-1001'>
+      </div>
+      <div class='form-group'>
+        <label class='margin-sm' for='standardRev'>Revision</label>
+          <input type='text' class='form-control' id='standardRev' name='standardRev' ng-model='formData.standardRev' placeholder='D'>
+      </div>
+      <div class='form-group'>
+        <label class='margin-sm' for='standardLink'>Link</label>
+          <input type='text' class='form-control' id='standardLink' name='standardLink' ng-model='formData.standardLink' placeholder='http://link.to/standard/rev'>
+      </div>
+    </form>
+    <div class='job-create-nav'>
+      <a href='#createjob/step1' class='btn btn-default'>
+        <span class='fui-arrow-left'></span> Back
+      </a>
+      <a href='#createjob/step3' class='btn btn-primary pull-right'>
+        Next &nbsp;<span class='fui-arrow-right'></span>
+      </a>
+    </div>
+  </div>
+</div>

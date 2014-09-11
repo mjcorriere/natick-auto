@@ -1,0 +1,43 @@
+<div class='row'>
+  <div class='col-xs-12 col-md-6'>
+    <pre>{{ppFormData}}</pre>
+    <h4>Customer Information</h4>
+    <form role='form' id='createJobForm'>
+      <div class='form-group'>
+        <label class='margin-sm' for='customerName'>Company Name</label>
+          <input type='text' class='form-control' id='customerName' name='customerName' ng-model='formData.customerName' placeholder='Draper Laboratories'>
+      </div>
+      <div class='form-group'>
+        <label class='margin-sm' for='contactName'>Contact Name</label>
+          <input type='text' class='form-control' id='contactName' name ='contactName' ng-model='formData.contactName' placeholder='John C. Doe'>
+      </div>            
+      <div class='form-group'>
+        <label class='margin-sm' for='contactEmail'>Contact E-mail</label>
+          <input type='text' class='form-control' id='contactEmail' name='contactEmail' ng-model='formData.contactEmail' placeholder='jdoe@company.com'>
+      </div>
+      <div class='form-group'>
+        <label class='margin-sm' for='contactPhone'>Contact Phone Number</label>
+          <input type='text' class='form-control' id='contactPhone' name='contactPhone' ng-model='formData.contactPhone' placeholder='781 654 1234'>
+      </div>
+      <h4>Contract Information</h4>
+      <div class='form-group'>
+        <label class='margin-sm' for='contractNo'>Contract #</label>
+          <input type='text' class='form-control' id='contractNo' name='contractNo' ng-model='formData.contractNo' placeholder='ABC123X'>
+      </div>      
+      <div class='form-group'>
+        <label class='margin-sm' for='dueDate'>Due Date</label>
+          <input type='date' class='form-control' id='dueDate' name='dueDate' ng-model='formData.dueDate'>
+      </div>
+      <div class='form-group'>
+        <label class='margin-sm' for='costQuote'>Quoted Cost</label>
+          <input type='text' class='form-control' id='costQuote' name='costQuote' ng-model='formData.costQuote' placeholder='$ 10000'>
+      </div>      
+    </form>
+    <div class='job-create-nav'>
+      <a href='#' class='btn btn-default disabled'><span class='fui-arrow-left'></span> Back</a>
+      <a href='#createjob/step2' class='btn btn-primary pull-right'>Next 
+      &nbsp;<span class='fui-arrow-right'></span>
+      </a>
+    </div>
+  </div>
+</div>
