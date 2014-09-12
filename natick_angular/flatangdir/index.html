@@ -22,11 +22,15 @@
       <div class="row">
         <div class="col-md-2">
 
-        <flatui-checkbox ng-repeat="item in checkbox1.options" model="item.selected" label="item.name" value="item.id" name="valcontainer0"></flatui-checkbox>
+            <flatui-checkbox ng-repeat="item in checkbox1.options" model="item.selected" label="item.name" value="item.id" name="valcontainer0"></flatui-checkbox>
+            <flatui-checkbox model='cbox.selected' label='cbox.label' value='1' name='cb1'>
+            </flatui-checkbox>
+
         </div>
 
-        <flatui-checkbox model='cbox.selected' label='' value='1' name='cb1'>
-        </flatui-checkbox>
+        {{cbox}}
+
+
 
       </div>
     </div>

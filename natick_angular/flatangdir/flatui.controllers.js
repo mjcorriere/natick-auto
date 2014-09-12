@@ -14,23 +14,10 @@
           }
         ];
 
-        $scope.cbox = {selected: false};
+        $scope.cbox = {
+          selected: false,
+          label: 'This is stupid'
+        };
 
-      //   $scope.radio1 = {};
-      //   $scope.radio1.options = [
-      //     {
-      //       "name": "radio1",
-      //       "id": 1
-      //     }, {
-      //       "name": "radio2",
-      //       "id": 2
-      //     }, {
-      //       "name": "radio3",
-      //       "id": 3
-      //     }
-      //   ];
-      //   $scope.radio1.selected = $scope.radio1.options[0].id;
-      //   $scope.switch1 = false;
-      // }
     }]);
 })();

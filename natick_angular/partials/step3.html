@@ -4,45 +4,25 @@
     <h4>Tests Required</h4>
     <form role='form'>
       <div class='form-group'>
-        <label class='checkbox checkbox-lg checkbox-margin-30' for='checkbox1'>
-          <input type='checkbox' name='checkbox1' id='checkbox1' value='' ng-model='formData.subtests.breakstrength.required'>
-          Break Strength
-        </label>
-        <div class='testoptions checkbox1'>
+        <flatui-checkbox model='formData.subtests.breakstrength.required' label="'Break Strength'" value='tests.breakstrength.id'></flatui-checkbox>
+        <div ng-show='formData.subtests.breakstrength.required' class='testoptions'>
           <label>Pull Direction(s)</label>
-          <label class='checkbox' for='warp'>
-            <input type='checkbox' name='warp' id='warp' value='warp' data-toggle='checkbox'>
-            Warp
-          </label>
-          <label class='checkbox' for='fill'>
-            <input type='checkbox' name='fill' id='fill' value='fill' data-toggle='checkbox'>
-            Fill
-          </label>          
-
+          <flatui-checkbox model='formData.subtests.breakstrength.warp' label="'Warp'" value=''></flatui-checkbox>
+          <flatui-checkbox model='formData.subtests.breakstrength.fill' label="'Fill'" value=''></flatui-checkbox>
           <label>Test Method</label>
-            <select name='breakstrength' class='mbn' style='display: none;'>
+            <select ng-model='formData.subtests.breakstrength.testMethod' name='breakstrength-tm' class='mbn' style=''>
                 <option value='0' selected='selected'>Select Test Method</option>
-                <option value='1'>ASTM D 5043</option>
-                <option value='2'>ASTM D 5044</option>
+                <option value='ASTM D 5043'>ASTM D 5043</option>
+                <option value='ASTM D 5044'>ASTM D 5044</option>
             </select>
         </div>
-        <label class='checkbox checkbox-lg checkbox-margin-30' for='checkbox2'>
-          <input type='checkbox' name='checkbox2' id='checkbox2' value='' data-toggle='checkbox'>
-          Visual Shade Evaluation
-        </label>
-        <div class='testoptions checkbox2'>
+        <flatui-checkbox model='formData.subtests.visualshade.required' label="'Visual Shade Evaluation'" value='tests.visualshade.id'></flatui-checkbox>
+        <div ng-show='formData.subtests.visualshade.required' class='testoptions'>
           <label>Test Method</label>
-            <select name='visualshade' class='mbn' style='display: none;'>
+            <select ng-model='formData.subtests.visualshade.testMethod' name='visualshade-tm' class='mbn' style=''>
                 <option value='0' selected='selected'>Select Test Method</option>
-                <option value='1' >AATCC Procedure 9</option>
+                <option value='AATCC Procedure 9'>AATCC Procedure 9</option>
             </select>          
-        </div>        
-        <label class="checkbox checkbox-lg checkbox-margin-30" for="checkbox3">
-          <input type="checkbox" value="" id="checkbox3" data-toggle="checkbox">
-          Unnamed Test
-        </label>
-        <div class='testoptions checkbox3'>
-          <input type='text'>
         </div>        
       </div>
     </form>
