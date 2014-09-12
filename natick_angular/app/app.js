@@ -86,7 +86,7 @@ natickModule.controller('createjobController', ['$scope', 'FormService', functio
 	// jQuery nonsense. These should be turned into AngularJS directives, 
 	// but who has the time for such things?
 
-	// $(':checkbox').checkbox();
+	$(':checkbox').checkbox();
 
 	$("select")
 		.selectpicker({style: 'btn-default'})
@@ -121,25 +121,27 @@ natickModule.controller('createjobController', ['$scope', 'FormService', functio
 			});
 		});		
 
+	// <old> Do not uncomment
 	// $('label').on('click', function() {
+	// </old>
+	
+	$(':checkbox').on('change', function() {			
 
-	// $(':checkbox').on('change', function() {			
+			var name = $(this).attr('name');
+			var isChecked = $(this).prop('checked');
+			var testOptions = $('.testoptions.' + name);
 
-	// 		var name = $(this).attr('name');
-	// 		var isChecked = $(this).prop('checked');
-	// 		var testOptions = $('.testoptions.' + name);
+			if(isChecked) {
+				testOptions.css('display', 'block');
+			} else {
+				testOptions.css('display', 'none');
+			}
+			console.log('changed');
+			$scope.$apply(function() {
+				console.log($scope.formData.subtests.breakstrength.required);
+			});
 
-	// 		if(isChecked) {
-	// 			testOptions.css('display', 'block');
-	// 		} else {
-	// 			testOptions.css('display', 'none');
-	// 		}
-	// 		console.log('changed');
-	// 		$scope.$apply(function() {
-	// 			console.log($scope.formData.subtests.breakstrength.required);
-	// 		});
-
-	// });
+	});
 
 }]);
 
