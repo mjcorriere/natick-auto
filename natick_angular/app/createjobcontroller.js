@@ -7,6 +7,7 @@ natickModule.controller('createjobController',
     var next = next.$$route.originalPath;
 
     if (next.indexOf('createjob') < 0) {
+      // Yes/no prompt goes here. Warn of data loss.
       console.log('User navigated away from form creation');
       FormService.reset();
     }
@@ -17,6 +18,7 @@ natickModule.controller('createjobController',
   });
 
   $scope.formData = FormService.formData();
+  $scope.submit = FormService.submit;
   $scope.ppFormData = null;
 
   $scope.test = '0';

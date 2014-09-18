@@ -7,7 +7,12 @@
       </a>
     </div>
     <div class='list-group'>
-      <a href='#joboverview' class='list-group-item'>
+      <a ng-repeat='job in jobs' href="{{'job/' + job.id}}" class='list-group-item'>
+        <span class='fui-arrow-right icon-2x pull-right'></span>
+        <h4>{{job.customer}}</h4>
+        <p>{{job.tests}}</p>
+      </a>
+<!--       <a href='#joboverview' class='list-group-item'>
         <span class="fui-arrow-right icon-2x pull-right"></span>
         <h4>Draper Laboratory</h4>
         <p>Break strength, Color fastness, Moisture absorption</p>
@@ -21,7 +26,7 @@
         <span class="fui-arrow-right icon-2x pull-right"></span>
         <h4>Vandelay Industries</h4>
         <p>Latex resistance, Import/Export analysis</p>
-      </a>
+      </a> -->
     </div>
   </div>
 </div>
