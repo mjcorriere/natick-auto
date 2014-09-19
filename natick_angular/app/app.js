@@ -44,6 +44,10 @@ natickModule.config(function($routeProvider) {
 		.when('/testsrequired', {
 			templateUrl		: 'partials/testsrequired.html',
 			controller 		: 'testsrequiredController'
+		})
+		.when('/job/:jobid', {
+			templateUrl		: 'partials/joboverview.html',
+			controller 		: 'joboverviewController'
 		});
 	
 });
