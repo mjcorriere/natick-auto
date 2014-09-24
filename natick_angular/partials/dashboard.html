@@ -7,7 +7,7 @@
       </a>
     </div>
     <div class='list-group'>
-      <a ng-repeat='job in jobs' href="{{'#/job/' + job.id}}" class='list-group-item'>
+      <a ng-repeat='job in jobList' href="{{'#/job/' + job.id}}" class='list-group-item'>
         <span class='fui-arrow-right icon-2x pull-right'></span>
         <h4>{{job.customer}}</h4>
         <p>{{job.tests}}</p>

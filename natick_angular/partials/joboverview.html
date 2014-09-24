@@ -2,9 +2,8 @@
   <div class='panel panel-default'>
     <div class='panel-body'>
       <h5 class='job-due-date'>Due Sept 13th, 2014</h5>
-      <h4>Draper Laboratory</h4>
-      <h5>{{jobid}}</h5>
-      <p>Test information. Special instructions. Or customer information, or something else.</p>
+      <h3>Job #{{jobid}}</h3>
+      <h4>{{customer}}</h4>
       <div class='progress'>
         <div class='progress-bar progress-bar-warning' style='width: 33%'></div>
       </div>
@@ -17,23 +16,18 @@
       </a>
     </div>
     <div class='list-group'>
-      <a href='#breakstrength' class='list-group-item'>
+      <a ng-repeat='test in pendingTests' href="{{'#/job/' + jobid + '/' + test.toLowerCase().split(' ').join('')}}" class='list-group-item'>
         <span class="fui-arrow-right pull-right"></span>
-        <h4>Break Strength</h4>
+        <h4>{{test}}</h4>
       </a>
-      <a href='#' class='list-group-item'>
-        <span class="fui-arrow-right pull-right"></span>
-        <h4>Color Fastness</h4>
-      </a>
-
     </div>
     <div class='panel-heading clearfix'>
       <h3 class='panel-title panel-title-lg pull-left'>Completed Tests</h3>
     </div>
     <div class='list-group'>
-      <a href='#' class='list-group-item'>
+      <a ng-repeat='test in completedTests' href='#' class='list-group-item'>
         <span class="fui-arrow-right pull-right"></span>
-        <h4>Moisture Absorption</h4>
+        <h4>{{test}}</h4>
       </a>
     </div>
   </div>

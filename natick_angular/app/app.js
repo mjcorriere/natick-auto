@@ -37,7 +37,7 @@ natickModule.config(function($routeProvider) {
 			templateUrl		: 'partials/step4.html',
 			controller 		: 'createjobController'
 		})
-		.when('/breakstrength', {
+		.when('/job/:jobid/breakstrength', {
 			templateUrl		: 'partials/breakstrength.html',
 			controller 		: 'breakstrengthController'
 		})

@@ -34,19 +34,28 @@ natickModule.factory('MockRetrievalService', function() {
 
   var jobs = [
     {
-      'id'  : '00145',
-      'customer' : 'Draper Laboratory',
-      'tests' : 'Break strength, Color fastness, Moisture absorption'
+      'id'              : '00145',
+      'customer'        : 'Draper Laboratory',
+      'tests'           : {
+        'pending'       : ['Break strength', 'Color fastness'],
+        'completed'     : ['Moisture absorption']
+      }
     },
     {
-      'id'  : '00148',
-      'customer' : 'Aperture Science',
-      'tests' : 'Compressive strength, Rockwell hardness'
+      'id'              : '00148',
+      'customer'        : 'Aperture Science',
+      'tests'           : {
+        'pending'       : ['Compressive strength', 'Rockwell hardness'],
+        'completed'     : []
+      }
     },
     {
-      'id'  : '00206',
-      'customer' : 'Global Flight Systems',
-      'tests' : 'Wind tunnel, flame retardance, impact resistance'
+      'id'              : '00206',
+      'customer'        : 'Global Flight Systems',
+      'tests'           : {
+        'pending'       : ['Wind tunnel'],
+        'completed'     : ['Flame retardance', 'Impact resistance']
+      }
     }
   ];  
   
@@ -56,8 +65,47 @@ natickModule.factory('MockRetrievalService', function() {
     return mockDB.customers;
   }
 
-  MockRetrievalService.getAllJobs = function() {
-    return angular.copy(jobs);
+  MockRetrievalService.getJobList = function() {
+
+    var jobList = [];
+
+    for(var i = 0; i < jobs.length; i++) {
+      jobList.push({
+        'id'          : jobs[i].id,
+        'customer'    : jobs[i].customer,
+        'tests'       : jobs[i].tests.pending
+                          .concat(jobs[i].tests.completed)
+                          .join(', ')
+      });
+    }
+
+    console.log(jobList);
+
+    return jobList;
+  }
+
+  MockRetrievalService.getPendingTests = function(jobid) {
+    for(var i = 0; i < jobs.length; i++) {
+      if(jobs[i].id == jobid) {
+        return jobs[i].tests.pending;
+      }
+    }
+  }
+
+  MockRetrievalService.getCompletedTests = function(jobid) {
+    for(var i = 0; i < jobs.length; i++) {
+      if(jobs[i].id == jobid) {
+        return jobs[i].tests.completed;
+      }
+    }
+  }
+
+  MockRetrievalService.getCustomer = function(jobid) {
+    for(var i = 0; i < jobs.length; i++) {
+      if(jobs[i].id == jobid) {
+        return jobs[i].customer;
+      }
+    }    
   }
 
   return MockRetrievalService;
