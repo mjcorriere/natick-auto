@@ -1,6 +1,5 @@
-natickModule.factory('FormService', ['$http', function($http) {
+natickModule.factory('FormService', [function() {
   
-  var dbUrl = 'http://natick2.draper.com/main';
   var formData = {};
 
   var emptyForm = {
@@ -10,10 +9,12 @@ natickModule.factory('FormService', ['$http', function($http) {
         , warp: false
         , fill: false
         , testMethod: '0'
+        , name: 'breakstrength'
       },
       visualshade: {
         required: false
         , testMethod: '0'
+        , name: 'visualshade'
       }
     }
   };
@@ -41,7 +42,7 @@ natickModule.factory('FormService', ['$http', function($http) {
       'name'  : formData.customerName
     };
 
-    $.post(dbUrl + '/Customer/0/',
+    $.post(Global.dbUrl + '/Customer/0/',
         newCustomer
       )
       .done(function(data) {
@@ -57,12 +58,12 @@ natickModule.factory('FormService', ['$http', function($http) {
 
       var newContact = {
             'contact_name'  :   formData.contactName,
-            'email_address'         :   formData.contactEmail,
+            'email_address' :   formData.contactEmail,
             'phone'         :   formData.contactPhone,
             'customer_id'   :   customer.id
           };
 
-      $.post(dbUrl + '/Contact/0/',
+      $.post(Global.dbUrl + '/Contact/0/',
         newContact
         )
         .done(function(data) {
@@ -77,17 +78,18 @@ natickModule.factory('FormService', ['$http', function($http) {
 
     function createServiceRequest() {
 
+      console.log(formData.dueDate);
       var newServiceRequest = {
-        'submission_date'   : new Date().toLocaleString(),
+        'submission_date'   : new Date().toISOString(),
         'cost_quote'        : formData.costQuote,
-        'actual_cost'       : '',
+        'actual_cost'       : '0',
         'due_date'          : formData.dueDate,
-        'date_completed'    : '',
+        'completed_date'    : new Date().toISOString(),
         'contract_number'   : formData.contractNo,
         'customer_id'       : customer.id
       };
 
-      $.post(dbUrl + '/ServiceRequest/0/',
+      $.post(Global.dbUrl + '/ServiceRequest/0/',
         newServiceRequest
         )
         .done(function(data) {
@@ -104,11 +106,12 @@ natickModule.factory('FormService', ['$http', function($http) {
       var newItem = {
         'item_name'   : formData.itemName,
         'item_type'   : formData.itemType,
-        'nomenclature': formData.nomenclature,
-        'request_id'  : service_request.id
+        // FIELD MISSPELLED IN DB. TIRED OF REQUESTING FIXES. LEAVING AS NOMECLATURE
+        'nomeclature' : formData.nomenclature,
+        'service_request_id'  : service_request.id
       };
 
-      $.post(dbUrl + '/Item/0/',
+      $.post(Global.dbUrl + '/Item/0/',
         newItem
         )
         .done(function(data) {
@@ -116,6 +119,9 @@ natickModule.factory('FormService', ['$http', function($http) {
           item = data;
           
           createRequirement();
+        })
+        .fail(function(data) {
+          $('body').append(data.responseText);
         });
 
     }
@@ -129,7 +135,7 @@ natickModule.factory('FormService', ['$http', function($http) {
         'item_id'         :   item.id
       };
 
-      $.post(dbUrl + '/RequirementsStandard/0/',
+      $.post(Global.dbUrl + '/RequirementsStandard/0/',
         newRequirement
         )
         .done(function(data) {
@@ -144,13 +150,13 @@ natickModule.factory('FormService', ['$http', function($http) {
     function createTestRequest() {
 
       var newTestRequest = {
-        'start_date'        :   '',
-        'due_date'          :   '',
-        'completion_date'   : '',
+        'start_date'        : new Date().toISOString(),
+        'due_date'          : new Date().toISOString(),
+        'completion_date'   : new Date().toISOString(),
         'item_id'           : item.id
       };
 
-      $.post(dbUrl + '/TestRequest/0/',
+      $.post(Global.dbUrl + '/TestRequest/0/',
         newTestRequest
         )
         .done(function(data) {
@@ -158,8 +164,12 @@ natickModule.factory('FormService', ['$http', function($http) {
           test_request = data;
           
           createSubTest();
-        });      
+        });
     
+    }
+
+    function createSubTest() {
+      console.log('Placeholder. Need to implement subtest');
     }
 
   }

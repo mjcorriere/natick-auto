@@ -1,7 +1,15 @@
 natickModule.controller('mainController', 
-  ['$scope', 'MockRetrievalService', function($scope, RetrievalService) {
+  ['$scope', 'MockRetrievalService', 'RetrievalService', function($scope, RetrievalService, rs) {
 
   $scope.jobList = RetrievalService.getJobList();
+
+  rs.getJobList();
+
+  // $scope.jobList = [];
+  // RetrievalService.getJobList()
+  //  .done(function(data) {
+  //    $scope.jobList = data;
+  // });
 
 }]);
 
@@ -17,6 +25,9 @@ natickModule.controller('joboverviewController',
 
 }]);
 
-natickModule.controller('breakstrengthController', ['$scope', function($scope) {
+natickModule.controller('breakstrengthController', 
+  ['$scope', 'MockRetrievalService', function($scope, RetrievalService) {
+
+
 
 }]);

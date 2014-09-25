@@ -2,6 +2,10 @@
 
 var DEBUG = true;
 
+var Global = {
+	dbUrl : 'http://natick2.draper.com/main'
+};
+
 // Instantiate the main module.
 // Include the ngRoute (module / package / whatever ?)
 var natickModule = angular.module('natick', ['ngRoute', 'flatuiApp.directives']);
