@@ -82,6 +82,7 @@ natickModule.factory('MockRetrievalService', function() {
     console.log(jobList);
 
     return jobList;
+    
   }
 
   MockRetrievalService.getPendingTests = function(jobid) {

@@ -26,8 +26,22 @@ natickModule.controller('joboverviewController',
 }]);
 
 natickModule.controller('breakstrengthController', 
-  ['$scope', 'MockRetrievalService', function($scope, RetrievalService) {
+  ['$scope', '$routeParams', 'MockRetrievalService', 'BreakStrengthService',
+  function($scope, $routeParams, RetrievalService, BreakStrengthService) {
 
+    $scope.jobid            = $routeParams.jobid;
 
+    $scope.nomenclature     = 'Cloth, 50/50 Nylon and Cotton';
+    $scope.spec             = 'Mil-C-1001';
+    $scope.testMethod       = 'ASTM-D-5034';
+
+    $scope.warpTest         = BreakStrengthService.warpTest();
+    $scope.fillTest         = BreakStrengthService.fillTest();
+
+    $scope.addWarpSample    = BreakStrengthService.addWarpSample;
+    $scope.removeWarpSample = BreakStrengthService.removeWarpSample;
+
+    $scope.addFillSample    = BreakStrengthService.addFillSample;
+    $scope.removeFillSample = BreakStrengthService.removeFillSample;
 
 }]);

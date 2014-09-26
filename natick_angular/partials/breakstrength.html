@@ -1,4 +1,21 @@
 
+<div ng-repeat='sample in warpTest' class='modal' id="{{'notesModal' + ($index + 1)}}">
+  <div class='modal-dialog'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <button type='button' class='close' data-dismiss='modal'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>
+        <h4 class='modal-title'>Notes for Sample {{$index + 1}}</h4>
+      </div>
+      <div class='modal-body'>
+        <textarea class='form-control' ng-model='sample.notes'></textarea>
+      </div>
+      <div class='modal-footer'>
+        <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="modal" id='notesModal'>
   <div class="modal-dialog">
     <div class="modal-content">
@@ -21,19 +38,19 @@
   <div class='panel panel-default'>
     <div class='panel-body'>
       <h5 class='job-due-date'>Due Sept 13th, 2014</h5>
-      <h4 class='job-number'>Job #00004239</h4>
+      <h4 class='job-number'>Job #0000{{jobid}}</h4>
       <img src='img/camoswatch.png' style='float: right'>
       <div class='job-info'>
         <h5>Nomenclature:</h5>
-        <p>Cloth, 50/50 Nylon and Cotton</p>
+        <p>{{nomenclature}}</p>
       </div>
       <div class='job-info'>
         <h5>Specification:</h5>
-        <p>Mil-C-1001</p>
+        <p>{{spec}}</p>
       </div>
       <div class='job-info'>
         <h5>Test Method:</h5>
-        <p>ASTM-D-5034</p>
+        <p>{{testMethod}}</p>
       </div>
     </div>
     <div class='panel-heading clearfix'>
@@ -56,65 +73,25 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td class='sample-no'>1.</td>
-                <td><input type='text' class='form-control input-sm'></td>
-                <td><input type='text' class='form-control input-sm'></td>
+              <tr ng-repeat="sample in warpTest">
+                <td class='sample-no'>{{$index + 1}}</td>
+                <td><input type='text' class='form-control input-sm' ng-model='sample.strength'></td>
+                <td><input type='text' class='form-control input-sm' ng-model='sample.elongation'></td>
                 <td>
-                  <a ng-click='$event.preventDefault()' href='#' class='btn btn-sm btn-default' data-toggle="modal" data-target="#notesModal">
+                  <a ng-click='$event.preventDefault()' href='#' class='btn btn-sm btn-default' data-toggle="modal" data-target="{{'#notesModal' + ($index + 1)}}">
                     <span class='glyphicon glyphicon-file'></span>
                   </a>
-                </td>
-              </tr>
-              <tr>
-                <td class='sample-no'>2.</td>
-                <td><input type='text' class='form-control input-sm'></td>
-                <td><input type='text' class='form-control input-sm'></td>
-                <td>
-                  <a href='#' class='btn btn-sm btn-default'>
-                    <span class='glyphicon glyphicon-file'></span>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td class='sample-no'>3.</td>
-                <td><input type='text' class='form-control input-sm'></td>
-                <td><input type='text' class='form-control input-sm'></td>
-                <td>
-                  <a href='#' class='btn btn-sm btn-default'>
-                    <span class='glyphicon glyphicon-file'></span>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td class='sample-no'>4.</td>
-                <td><input type='text' class='form-control input-sm'></td>
-                <td><input type='text' class='form-control input-sm'></td>
-                <td>
-                  <a href='#' class='btn btn-sm btn-default'>
-                    <span class='glyphicon glyphicon-file'></span>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td class='sample-no'>5.</td>
-                <td><input type='text' class='form-control input-sm'></td>
-                <td><input type='text' class='form-control input-sm'></td>
-                <td>
-                  <a href='#' class='btn btn-sm btn-default'>
-                    <span class='glyphicon glyphicon-file'></span>
-                  </a>
-                </td>
+                </td>                  
               </tr>
               <tr>
                 <td colspan='2'>
-                  <a href='#' class='btn btn-block btn-primary'>
+                  <a ng-click='$event.preventDefault(); addWarpSample()' href='#' class='btn btn-block btn-primary'>
                     <span class='glyphicon glyphicon-plus'></span>
                     &nbsp;Add sample
                   </a>
                 </td>
                 <td colspan='2'>
-                  <a href='#' class='btn btn-block btn-warning'>
+                  <a ng-click='$event.preventDefault(); removeWarpSample()' href='#' class='btn btn-block btn-warning'>
                     <span class='glyphicon glyphicon-minus'></span>
                     &nbsp;Remove sample
                   </a>
@@ -134,86 +111,30 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td class='sample-no'>1.</td>
-                <td><input type='text' class='form-control input-sm'></td>
-                <td><input type='text' class='form-control input-sm'></td>
+              <tr ng-repeat="sample in fillTest">
+                <td class='sample-no'>{{$index + 1}}</td>
+                <td><input type='text' class='form-control input-sm' ng-model='sample.strength'></td>
+                <td><input type='text' class='form-control input-sm' ng-model='sample.elongation'></td>
                 <td>
-                  <a href='#' class='btn btn-sm btn-default'>
+                  <a ng-click='$event.preventDefault()' href='#' class='btn btn-sm btn-default' data-toggle="modal" data-target="{{'#notesModal' + ($index + 1)}}">
                     <span class='glyphicon glyphicon-file'></span>
                   </a>
-                </td>
+                </td>                  
               </tr>
               <tr>
-                <td class='sample-no'>2.</td>
-                <td><input type='text' class='form-control input-sm'></td>
-                <td><input type='text' class='form-control input-sm'></td>
-                <td>
-                  <a href='#' class='btn btn-sm btn-default'>
-                    <span class='glyphicon glyphicon-file'></span>
+                <td colspan='2'>
+                  <a ng-click='$event.preventDefault(); addFillSample()' href='#' class='btn btn-block btn-primary'>
+                    <span class='glyphicon glyphicon-plus'></span>
+                    &nbsp;Add sample
                   </a>
                 </td>
-              </tr>
-              <tr>
-                <td class='sample-no'>3.</td>
-                <td><input type='text' class='form-control input-sm'></td>
-                <td><input type='text' class='form-control input-sm'></td>
-                <td>
-                  <a href='#' class='btn btn-sm btn-default'>
-                    <span class='glyphicon glyphicon-file'></span>
+                <td colspan='2'>
+                  <a ng-click='$event.preventDefault(); removeFillSample()' href='#' class='btn btn-block btn-warning'>
+                    <span class='glyphicon glyphicon-minus'></span>
+                    &nbsp;Remove sample
                   </a>
                 </td>
-              </tr>
-              <tr>
-                <td class='sample-no'>4.</td>
-                <td><input type='text' class='form-control input-sm'></td>
-                <td><input type='text' class='form-control input-sm'></td>
-                <td>
-                  <a href='#' class='btn btn-sm btn-default'>
-                    <span class='glyphicon glyphicon-file'></span>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td class='sample-no'>5.</td>
-                <td><input type='text' class='form-control input-sm'></td>
-                <td><input type='text' class='form-control input-sm'></td>
-                <td>
-                  <a href='#' class='btn btn-sm btn-default'>
-                    <span class='glyphicon glyphicon-file'></span>
-                  </a>
-                </td>
-              </tr> 
-              <tr>
-                <td class='sample-no'>6.</td>
-                <td><input type='text' class='form-control input-sm'></td>
-                <td><input type='text' class='form-control input-sm'></td>
-                <td>
-                  <a href='#' class='btn btn-sm btn-default'>
-                    <span class='glyphicon glyphicon-file'></span>
-                  </a>
-                </td>
-              </tr> 
-              <tr>
-                <td class='sample-no'>7.</td>
-                <td><input type='text' class='form-control input-sm'></td>
-                <td><input type='text' class='form-control input-sm'></td>
-                <td>
-                  <a href='#' class='btn btn-sm btn-default'>
-                    <span class='glyphicon glyphicon-file'></span>
-                  </a>
-                </td>
-              </tr> 
-              <tr>
-                <td class='sample-no'>8.</td>
-                <td><input type='text' class='form-control input-sm'></td>
-                <td><input type='text' class='form-control input-sm'></td>
-                <td>
-                  <a href='#' class='btn btn-sm btn-default'>
-                    <span class='glyphicon glyphicon-file'></span>
-                  </a>
-                </td>
-              </tr> 
+              </tr>              
             </tbody>
           </table>
         </div>
