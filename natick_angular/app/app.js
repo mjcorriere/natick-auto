@@ -45,6 +45,10 @@ natickModule.config(function($routeProvider) {
 			templateUrl		: 'partials/breakstrength.html',
 			controller 		: 'breakstrengthController'
 		})
+		.when('/job/:jobid/visualshade', {
+			templateUrl 	: 'partials/visualshade.html',
+			controller 		: 'visualshadeController'
+		})
 		.when('/testsrequired', {
 			templateUrl		: 'partials/testsrequired.html',
 			controller 		: 'testsrequiredController'

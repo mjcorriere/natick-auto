@@ -37,7 +37,7 @@ natickModule.factory('MockRetrievalService', function() {
       'id'              : '00145',
       'customer'        : 'Draper Laboratory',
       'tests'           : {
-        'pending'       : ['Break strength', 'Color fastness'],
+        'pending'       : ['Break strength', 'Visual shade'],
         'completed'     : ['Moisture absorption']
       }
     },
@@ -82,7 +82,7 @@ natickModule.factory('MockRetrievalService', function() {
     console.log(jobList);
 
     return jobList;
-    
+
   }
 
   MockRetrievalService.getPendingTests = function(jobid) {

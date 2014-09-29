@@ -1,0 +1,172 @@
+<!-- GET FLASK RESTLESS -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Natick Automation - Visual Shade Evaluation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Loading Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="css/flat-ui.css" rel="stylesheet">
+    <link href='css/style.css' rel='stylesheet'>
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <div class="modal" id='notesModal'>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title">Sample Notes</h4>
+          </div>
+          <div class="modal-body">
+            <textarea class='form-control'></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class='navbar navbar-inverse navbar-fixed-top' role='navigation'>
+      <div class='container'>
+        <div class='navbar-header'>
+          <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </button>
+          <a class='navbar-brand' href='#'>Visual Shade</a>
+        </div>
+        <div class='navbar-collapse collapse'>
+          <ul class='nav navbar-nav'>
+            <li><a href='index.html'>Dashboard</a></li>
+            <li><a href='jobcreation.html'>Create Job</a></li>
+            <li><a href='#'>View Tests</a></li>
+            <li><a href='#'>Log Out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Magic goes here. i.e. AngularJS -->
+      <div class='row'>
+        <div class='panel panel-default'>
+          <div class='panel-body'>
+            <h5 class='job-due-date'>Due Sept 13th, 2014</h5>
+            <h4 class='job-number'>Job #00004239</h4>
+            <img src='img/camoswatch.png' style='float: right'>
+            <div class='job-info'>
+              <h5>Nomenclature:</h5>
+              <p>Cloth, 50/50 Nylon and Cotton</p>
+            </div>
+            <div class='job-info'>
+              <h5>Specification:</h5>
+              <p>Mil-C-1001</p>
+            </div>
+            <div class='job-info'>
+              <h5>Test Method:</h5>
+              <p>AATCC Procedure 9</p>
+            </div>
+          </div>
+          <div class='panel-heading clearfix'>
+            <h3 class='panel-title panel-title-lg pull-left'>Test Data</h3>
+          </div>
+          <div class='panel-body'>
+            <table class='table'>
+              <thead>
+                <tr>
+                  <td>Color</td>
+                  <td>Result</td>
+                  <td>Notes</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class='sample-no'>Tan</td>
+                  <td>
+                    <select name="info" class="mbn">
+                        <option value="0" selected="selected">Select Result</option>
+                        <option value="1">Acceptable</option>
+                        <option value="2">Not Acceptable</option>
+                        <option value="3">Other (see notes)</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input type='text' class='form-control input-sm'></td>
+                </tr>
+                <tr>
+                  <td class='sample-no'>Green</td>
+                  <td>
+                    <select name="info" class="mbn">
+                        <option value="0" selected="selected">Select Result</option>
+                        <option value="1">Acceptable</option>
+                        <option value="2">Not Acceptable</option>
+                        <option value="3">Other (see notes)</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input type='text' class='form-control input-sm'>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='sample-no'>Blue</td>
+                  <td>
+                    <select name="info" class="mbn">
+                        <option value="0" selected="selected">Select Result</option>
+                        <option value="1">Acceptable</option>
+                        <option value="2">Not Acceptable</option>
+                        <option value="3">Other (see notes)</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input type='text' class='form-control input-sm'>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+              <a href='#' class='btn btn-primary'>
+                <span class='glyphicon glyphicon-plus'></span>
+                &nbsp;Add Color
+              </a>
+              <a href='#' class='btn btn-warning'>
+                <span class='glyphicon glyphicon-minus'></span>
+                &nbsp;Remove Color
+              </a>
+            <div class='pull-right'>
+              <a href='#' class='btn btn-inverse'>Submit Test Results</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container -->
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/jquery.ui.touch-punch.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-select.js"></script>
+    <script src="js/bootstrap-switch.js"></script>
+    <script src="js/flatui-checkbox.js"></script>
+    <script src="js/flatui-radio.js"></script>
+    <script src="js/jquery.tagsinput.js"></script>
+    <script src="js/jquery.placeholder.js"></script>
+    <script type='text/javascript'>
+      $("select[name='info']").selectpicker({style: 'btn-default'});
+    </script>
+  </body>
+</html>

@@ -45,3 +45,7 @@ natickModule.controller('breakstrengthController',
     $scope.removeFillSample = BreakStrengthService.removeFillSample;
 
 }]);
+
+natickModule.controller('visualshadeController', ['$scope', function($scope) {
+  $scope.hi = 'hi';
+}]);
