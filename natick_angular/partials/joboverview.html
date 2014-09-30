@@ -11,9 +11,6 @@
     </div>
     <div class='panel-heading clearfix'>
       <h3 class='panel-title panel-title-lg pull-left'>Pending Tests</h3>
-      <a href="#" class="btn btn-xs btn-primary pull-right">
-          <span class="glyphicon glyphicon-flash"></span> Add Test
-      </a>
     </div>
     <div class='list-group'>
       <a ng-repeat='test in pendingTests' href="{{'#/job/' + jobid + '/' + test.toLowerCase().split(' ').join('')}}" class='list-group-item'>
