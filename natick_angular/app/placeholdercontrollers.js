@@ -46,6 +46,13 @@ natickModule.controller('breakstrengthController',
 
 }]);
 
-natickModule.controller('visualshadeController', ['$scope', function($scope) {
-  $scope.hi = 'hi';
+natickModule.controller('visualshadeController', 
+  ['$scope', 'VisualShadeService',
+  function($scope, VisualShadeService) {
+
+    $scope.testData     = VisualShadeService.testData();
+    
+    $scope.removeSample = VisualShadeService.removeSample;
+    $scope.addSample    = VisualShadeService.addSample;
+
 }]);

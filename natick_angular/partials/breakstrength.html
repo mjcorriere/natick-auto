@@ -16,24 +16,6 @@
   </div>
 </div>
 
-<div class="modal" id='notesModal'>
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title">Sample Notes</h4>
-      </div>
-      <div class="modal-body">
-        <textarea class='form-control'></textarea>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div>
-
 <div class='row'>
   <div class='panel panel-default'>
     <div class='panel-body'>
@@ -55,6 +37,9 @@
     </div>
     <div class='panel-heading clearfix'>
       <h3 class='panel-title panel-title-lg pull-left'>Test Data</h3>
+        <a ng-click='$event.preventDefault()' href='#' class='btn btn-primary pull-right'><span class='fui-check'></span>
+          &nbsp;Complete Test
+          </a>     
     </div>
     <div class='panel-body'>
       <ul class='nav nav-tabs' role='tablist'>
@@ -85,13 +70,13 @@
               </tr>
               <tr>
                 <td colspan='2'>
-                  <a ng-click='$event.preventDefault(); addWarpSample()' href='#' class='btn btn-block btn-primary'>
+                  <a ng-click='$event.preventDefault(); addWarpSample()' href='#' class='btn btn-block btn-inverse'>
                     <span class='glyphicon glyphicon-plus'></span>
                     &nbsp;Add sample
                   </a>
                 </td>
                 <td colspan='2'>
-                  <a ng-click='$event.preventDefault(); removeWarpSample()' href='#' class='btn btn-block btn-warning'>
+                  <a ng-click='$event.preventDefault(); removeWarpSample()' href='#' class='btn btn-block btn-inverse'>
                     <span class='glyphicon glyphicon-minus'></span>
                     &nbsp;Remove sample
                   </a>
@@ -123,13 +108,13 @@
               </tr>
               <tr>
                 <td colspan='2'>
-                  <a ng-click='$event.preventDefault(); addFillSample()' href='#' class='btn btn-block btn-primary'>
+                  <a ng-click='$event.preventDefault(); addFillSample()' href='#' class='btn btn-block btn-inverse'>
                     <span class='glyphicon glyphicon-plus'></span>
                     &nbsp;Add sample
                   </a>
                 </td>
                 <td colspan='2'>
-                  <a ng-click='$event.preventDefault(); removeFillSample()' href='#' class='btn btn-block btn-warning'>
+                  <a ng-click='$event.preventDefault(); removeFillSample()' href='#' class='btn btn-block btn-inverse'>
                     <span class='glyphicon glyphicon-minus'></span>
                     &nbsp;Remove sample
                   </a>
@@ -140,7 +125,7 @@
         </div>
       </div>
       <div class='pull-right'>
-        <a ng-click='$event.preventDefault()' href='#' class='btn btn-inverse'>Submit Test Results</a>
+
       </div>
     </div>
   </div>

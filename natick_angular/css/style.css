@@ -65,6 +65,10 @@ td.sample-no {
 	text-align: center;
 }
 
+input.sample-color {
+	max-width: 225px;
+}
+
 label.margin-sm {
 	line-height: 1.6;
 }
