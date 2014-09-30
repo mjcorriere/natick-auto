@@ -44,6 +44,14 @@ natickModule.controller('breakstrengthController',
     $scope.addFillSample    = BreakStrengthService.addFillSample;
     $scope.removeFillSample = BreakStrengthService.removeFillSample;
 
+    $scope.completeTest     = BreakStrengthService.completeTest;
+
+    $scope.$on('$routeChangeStart', function(event, next, current) {
+      BreakStrengthService.saveData();
+    });
+
+
+
 }]);
 
 natickModule.controller('visualshadeController', 
@@ -54,5 +62,11 @@ natickModule.controller('visualshadeController',
     
     $scope.removeSample = VisualShadeService.removeSample;
     $scope.addSample    = VisualShadeService.addSample;
+
+    $scope.completeTest = VisualShadeService.completeTest;
+
+    $scope.$on('$routeChangeStart', function(event, next, current) {
+      VisualShadeService.saveData();
+    });
 
 }]);

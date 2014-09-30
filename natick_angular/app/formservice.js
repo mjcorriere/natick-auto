@@ -106,7 +106,6 @@ natickModule.factory('FormService', [function() {
       var newItem = {
         'item_name'   : formData.itemName,
         'item_type'   : formData.itemType,
-        // FIELD MISSPELLED IN DB. TIRED OF REQUESTING FIXES. LEAVING AS NOMECLATURE
         'nomeclature' : formData.nomenclature,
         'service_request_id'  : service_request.id
       };

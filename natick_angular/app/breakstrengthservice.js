@@ -1,5 +1,12 @@
 natickModule.factory('BreakStrengthService', [function() {
 
+  // var fillTest = [];
+  // var warpTest = [];
+
+  // var subTestID ?
+  // Keep a reference to the subtest ID once we get it so we don't have to
+  // query it from the poor DB interface multiple times ... ?
+
   //Retreieve tests from DB; These are placeholders;
 
   var fillTest = [];
@@ -40,11 +47,13 @@ natickModule.factory('BreakStrengthService', [function() {
 
   var BreakStrengthService = {};
 
-  BreakStrengthService.warpTest = function() {
+  BreakStrengthService.warpTest = function(jobid) {
+    // warpTest = $.get() ...
     return warpTest;
   }
 
-  BreakStrengthService.fillTest = function() {
+  BreakStrengthService.fillTest = function(jobid) {
+    // fillTest = $.get() ...
     return fillTest;
   }
 
@@ -63,6 +72,18 @@ natickModule.factory('BreakStrengthService', [function() {
   BreakStrengthService.removeFillSample = function() {
     fillTest.pop();
   }  
+
+  BreakStrengthService.saveData = function() {
+    console.log('user moved away from the break test');
+    console.log('submit partial form to DB to retain data');
+    //$.post(dbUrl + '/SubTest/')
+  }
+
+  BreakStrengthService.completeTest = function() {
+      console.log('placeholder for submitting break test.');
+      // This function should send the final data and change
+      // date completed to the current date and time.
+  }
 
   return BreakStrengthService;
 

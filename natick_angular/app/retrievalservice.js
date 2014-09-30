@@ -12,17 +12,23 @@ natickModule.factory('RetrievalService', function() {
   
   RetrievalService = {};
 
+  // RetrievalService.getGeneric = function() {
+  //   var generic = [];
+  //   $.get(dbUrl + '/Resource/id')
+  //     .done(function(response) {
+  //       generic = response;
+  //     });
+
+  //   // Hopefully, the magic of closures will update the $scope variable in the
+  //   // calling controller. This way we don't have to expose the idea of
+  //   // promises to the controller. It just gets a placeholder variable until
+  //   // the request completes.
+
+  //   return generic;
+  // }
+
   RetrievalService.getAllCustomers = function() {
     
-    // $.get('***customer request***')
-    //   .done(function(data) {
-    //     return data;
-    //   })
-    //   .fail(function(data) {
-    //     console.log('Request for all customers failed.');
-    //   });
-
-    // promise = $.get(Global.dbUrl + '/Customer/' + customerID + '/all/');
     promise = $.get(Global.dbUrl + '/Customer/26/');
 
     return promise;
@@ -67,7 +73,10 @@ natickModule.factory('RetrievalService', function() {
      * {id: jobid, customer: customername, tests: list of tests}
      * All properties should be a string
      */
-     console.log('getting jobs');
+
+    var jobList = [];
+    
+    console.log('getting jobs');
 
     this.getAllCustomers()
       .done(function(customers) {
@@ -106,7 +115,7 @@ natickModule.factory('RetrievalService', function() {
       }); 
 
 
-    // var promise;
+    return jobList;
 
     // for(var i = 0; i < jobs.length; i++) {
     //   jobList.push({
@@ -118,31 +127,31 @@ natickModule.factory('RetrievalService', function() {
     //   });
     // }
 
-
   }
 
   RetrievalService.getPendingTests = function(jobid) {
-    for(var i = 0; i < jobs.length; i++) {
-      if(jobs[i].id == jobid) {
-        return jobs[i].tests.pending;
-      }
-    }
+    var pendingTests = [];
+
+    // DB Query
+
+    return pendingTests;
   }
 
   RetrievalService.getCompletedTests = function(jobid) {
-    for(var i = 0; i < jobs.length; i++) {
-      if(jobs[i].id == jobid) {
-        return jobs[i].tests.completed;
-      }
-    }
+    var completedTests = [];
+
+    // DB Query
+
+    return completedTests;
   }
 
   RetrievalService.getCustomer = function(jobid) {
-    for(var i = 0; i < jobs.length; i++) {
-      if(jobs[i].id == jobid) {
-        return jobs[i].customer;
-      }
-    }    
+    var customer = '';
+
+    // DB Query
+
+    return customer;
+
   }
 
   return RetrievalService;
