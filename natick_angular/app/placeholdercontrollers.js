@@ -1,9 +1,9 @@
 natickModule.controller('mainController', 
   ['$scope', 'MockRetrievalService', 'RetrievalService', function($scope, RetrievalService, rs) {
 
-  $scope.jobList = RetrievalService.getJobList();
-
-  $scope.testList = rs.getJobList();
+  // $scope.jobList = RetrievalService.getJobList();
+  $scope.jobList = rs.getJobList();
+  //$scope.testList = rs.getJobList();
 
   // $scope.jobList = [];
   // RetrievalService.getJobList()
@@ -30,6 +30,8 @@ natickModule.controller('breakstrengthController',
   function($scope, $location, $routeParams, RetrievalService, BreakStrengthService) {
 
     $scope.jobid            = $routeParams.jobid;
+
+    // Pull these from DB
 
     $scope.nomenclature     = 'Cloth, 50/50 Nylon and Cotton';
     $scope.spec             = 'Mil-C-1001';

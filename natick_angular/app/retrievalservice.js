@@ -29,42 +29,84 @@ natickModule.factory('RetrievalService', function() {
 
   RetrievalService.getAllCustomers = function() {
     
-    promise = $.get(Global.dbUrl + '/Customer/26/');
+    console.log('getting customers');
+    var customers = [];
+    
+    $.ajax({
+      url: Global.dbUrl + '/Customer/26/',
+      async: false
+    }).success(function(data) {
+      customers = [data];
+    });
 
-    return promise;
+    return customers;
 
   }
 
   RetrievalService.getServiceRequests = function(customerID) {
+    
+    console.log('getting service requests');
+    var serviceRequests = [];
 
-    promise = $.get(Global.dbUrl + '/Customer/' + customerID + '/all/');
+    $.ajax({
+      url: Global.dbUrl + '/Customer/' + customerID + '/all/',
+      async: false
+    }).success(function(data) {
+      serviceRequests = data.service_requests;
+    });    
 
-    return promise;
+    return serviceRequests;
 
   }
 
   RetrievalService.getItems = function(serviceRequestID) {
 
-    promise = $.get(Global.dbUrl + '/ServiceRequest/' + serviceRequestID + '/all/');
-    
-    return promise;
+    console.log('getting items');
+    var items = [];
 
+    $.ajax({
+      url: Global.dbUrl + '/ServiceRequest/' + serviceRequestID + '/all/',
+      async: false
+    }).success(function(data) {
+      items = data.items;
+    });    
+
+    return items;    
+    
   }
 
   RetrievalService.getTestRequests = function(itemID) {
 
-    promise = $.get(Global.dbUrl + '/Item/' + itemID + '/all/');
+    console.log('getting test requests');
 
-    return promise;
+    var testRequests = [];
 
+    $.ajax({
+      url: Global.dbUrl + '/Item/' + itemID + '/all/',
+      async: false
+    }).success(function(data) {
+     testRequests = data.test_requests;
+    });    
+
+    return testRequests;        
+   
   }
 
   RetrievalService.getSubTests = function(testRequestID) {
 
-    promise = $.get(Global.dbUrl + '/TestRequest/' + testRequestID + '/all/');
+    console.log('getting subtests');
 
-    return promise;
+    var subTests = [];
 
+    $.ajax({
+      url: Global.dbUrl + '/TestRequest/' + testRequestID + '/all/',
+      async: false
+    }).success(function(data) {
+      subTests = data.sub_tests;
+    });    
+
+    return subTests;           
+   
   }
 
   RetrievalService.getJobList = function() {
@@ -75,73 +117,56 @@ natickModule.factory('RetrievalService', function() {
      */
 
     var jobList = [];
-    
+    var customers, serviceRequests , items , testRequests, subTests;   
     console.log('getting jobs');
 
-    this.getAllCustomers()
-      .done(function(data) {
-        console.log('getting customers');
-        var serviceRequests = [];
-        var customers = [data];  // *** REMOVE ME. Need to get full customer list.
-        console.log(customers);
-        for (var i = 0; i < customers.length; i++) {
-          var customer = customers[i];
-          RetrievalService.getServiceRequests(customer.id)
-            .done(function(data) {
-              console.log('getting service requests');
-              serviceRequests = data.service_requests;
-              console.log(serviceRequests);
-              for (var j = 0; j < serviceRequests.length; j++) {
-                var subTests = [];
-                var serviceRequest = serviceRequests[j];
-                jobList.push(
-                  {
-                    'id': serviceRequest.id,
-                    'customer': customer.name,
-                    'tests': subTests
-                  }
-                );
-                RetrievalService.getItems(serviceRequest.id)
-                  .done(function(data) {
-                    console.log('getting items');
-                    items = data.items;
-                    console.log(items);
-                    for (var k = 0; k < items.length; k++) {
-                      var item = items[k];
-                      RetrievalService.getTestRequests(item.id)
-                        .done(function(data) {
-                          console.log('getting test requests');
-                          testRequests = data.test_requests;
-                          console.log(data.test_requests);
-                          for (var m = 0; m < testRequests.length; m++) {
-                            var testRequest = testRequests[m];
-                            RetrievalService.getSubTests(testRequest.id)
-                              .done(function(data) {
-                                console.log('getting subtests');
-                                for(var n = 0; n < data.sub_tests.length; n++) {
-                                  subTests.push(data.sub_tests[n].test_name)
-                                }
-                              });
-                          }
-                        });
-                    }
-                  });
-              }
-            });
-        }
-      }); 
-    
-    return jobList;
+    customers = RetrievalService.getAllCustomers();
 
-    // for(var i = 0; i < jobs.length; i++) {
-    //   jobList.push({
-    //     'id'          : jobs[i].id,
-    //     'customer'    : jobs[i].customer,
-    //     'tests'       : jobs[i].tests.pending
-    //                       .concat(jobs[i].tests.completed)
-    //                       .join(', ')
-    //   });
-    // }
+    for(var i = 0; i < customers.length; i++) {
+      var customer = customers[i];
+      serviceRequests = (RetrievalService.getServiceRequests(customer.id));
+
+      for(var j = 0; j < serviceRequests.length; j++) {
+        var serviceRequest = serviceRequests[j];
+
+        jobList[j] = {
+          id: serviceRequest.id.toString(),
+          customer: customer.name,
+          tests: ''
+        }
+
+        items = RetrievalService.getItems(serviceRequest.id);
+
+        for(var k = 0; k < items.length; k++) {
+          var item = items[k];
+          testRequests = RetrievalService.getTestRequests(item.id);
+
+          for(var m = 0; m < testRequests.length; m++) {
+            var testRequest = testRequests[m];
+            subTests = RetrievalService.getSubTests(testRequest.id);
+
+            for(var n = 0; n < subTests.length; n++) {
+              var subTest = subTests[n];
+              if (jobList[j].tests == '') {
+                jobList[j].tests = subTest.test_name;
+              } else {
+                jobList[j].tests = jobList[j].tests + ', ' + subTest.test_name;
+              }
+            }
+
+          }
+        }
+
+      }
+
+    }
+
+    if (Global.DEBUG) {
+      console.log(customers, serviceRequests, items, testRequests, subTests)
+      console.log(jobList);
+    }
+
+    return jobList;
 
   }
 

@@ -3,8 +3,8 @@
 var DEBUG = false;
 
 var Global = {
+	DEBUG : true,
 	dbUrl : 'http://natick2.draper.com/main'
-	//dbUrl : 'none'
 };
 
 // Instantiate the main module.

@@ -23,7 +23,7 @@ natickModule.controller('createjobController',
 
   $scope.test = '0';
   
-  if (DEBUG) {
+  if (Global.DEBUG) {
     $scope.$watch('formData', function() {
       $scope.ppFormData = JSON.stringify($scope.formData, null, 2);
     }, true);
