@@ -3,7 +3,7 @@ natickModule.controller('mainController',
 
   $scope.jobList = RetrievalService.getJobList();
 
-  rs.getJobList();
+  $scope.testList = rs.getJobList();
 
   // $scope.jobList = [];
   // RetrievalService.getJobList()

@@ -106,7 +106,7 @@ natickModule.factory('FormService', [function() {
       var newItem = {
         'item_name'   : formData.itemName,
         'item_type'   : formData.itemType,
-        'nomeclature' : formData.nomenclature,
+        'nomenclature' : formData.nomenclature,
         'service_request_id'  : service_request.id
       };
 
@@ -120,6 +120,7 @@ natickModule.factory('FormService', [function() {
           createRequirement();
         })
         .fail(function(data) {
+          $('body').append(newItem);
           $('body').append(data.responseText);
         });
 
@@ -169,6 +170,9 @@ natickModule.factory('FormService', [function() {
 
     function createSubTest() {
       console.log('Placeholder. Need to implement subtest');
+      // Make sure you create the test name correctly. It should have spaces
+      // for pretty printing. Remove spaces and uppercase letters when using
+      // the name to change to the route (:jobid/testname)
     }
 
   }

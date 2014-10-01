@@ -79,31 +79,48 @@ natickModule.factory('RetrievalService', function() {
     console.log('getting jobs');
 
     this.getAllCustomers()
-      .done(function(customers) {
+      .done(function(data) {
         console.log('getting customers');
-        customers = [customers];  // *** REMOVE ME
+        var serviceRequests = [];
+        var customers = [data];  // *** REMOVE ME. Need to get full customer list.
         console.log(customers);
         for (var i = 0; i < customers.length; i++) {
-          RetrievalService.getServiceRequests(customers[i].id)
+          var customer = customers[i];
+          RetrievalService.getServiceRequests(customer.id)
             .done(function(data) {
               console.log('getting service requests');
-              var serviceRequests = data.service_requests;
+              serviceRequests = data.service_requests;
               console.log(serviceRequests);
-              for (var i = 0; i < serviceRequests.length; i++) {
-                RetrievalService.getItems(serviceRequests[i].id)
+              for (var j = 0; j < serviceRequests.length; j++) {
+                var subTests = [];
+                var serviceRequest = serviceRequests[j];
+                jobList.push(
+                  {
+                    'id': serviceRequest.id,
+                    'customer': customer.name,
+                    'tests': subTests
+                  }
+                );
+                RetrievalService.getItems(serviceRequest.id)
                   .done(function(data) {
                     console.log('getting items');
                     items = data.items;
                     console.log(items);
-                    for (var i = 0; i < items.length; i++) {
-                      RetrievalService.getTestRequests(items[i].id)
-                        .done(function(testRequests) {
+                    for (var k = 0; k < items.length; k++) {
+                      var item = items[k];
+                      RetrievalService.getTestRequests(item.id)
+                        .done(function(data) {
                           console.log('getting test requests');
-                          console.log(testRequests);
-                          for (var i = 0; i < testRequests.length; i++) {
-                            RetrievalService.getSubTests(testRequests[i].id)
-                              .done(function(subTests) {
-                                console.log(subTests);
+                          testRequests = data.test_requests;
+                          console.log(data.test_requests);
+                          for (var m = 0; m < testRequests.length; m++) {
+                            var testRequest = testRequests[m];
+                            RetrievalService.getSubTests(testRequest.id)
+                              .done(function(data) {
+                                console.log('getting subtests');
+                                for(var n = 0; n < data.sub_tests.length; n++) {
+                                  subTests.push(data.sub_tests[n].test_name)
+                                }
                               });
                           }
                         });
@@ -113,8 +130,7 @@ natickModule.factory('RetrievalService', function() {
             });
         }
       }); 
-
-
+    
     return jobList;
 
     // for(var i = 0; i < jobs.length; i++) {
