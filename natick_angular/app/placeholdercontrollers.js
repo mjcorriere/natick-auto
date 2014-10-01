@@ -1,15 +1,7 @@
 natickModule.controller('mainController', 
-  ['$scope', 'MockRetrievalService', 'RetrievalService', function($scope, RetrievalService, rs) {
+  ['$scope', 'MockRetrievalService', function($scope, RetrievalService) {
 
-  // $scope.jobList = RetrievalService.getJobList();
-  $scope.jobList = rs.getJobList();
-  //$scope.testList = rs.getJobList();
-
-  // $scope.jobList = [];
-  // RetrievalService.getJobList()
-  //  .done(function(data) {
-  //    $scope.jobList = data;
-  // });
+  $scope.jobList = RetrievalService.getJobList();
 
 }]);
 

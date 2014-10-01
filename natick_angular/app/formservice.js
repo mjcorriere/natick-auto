@@ -118,9 +118,10 @@ natickModule.factory('FormService', [function() {
           item = data;
           
           createRequirement();
+          createTestRequest();          
         })
         .fail(function(data) {
-          $('body').append(newItem);
+          $('body').append(JSON.stringify(newItem, null, 2));
           $('body').append(data.responseText);
         });
 
@@ -141,8 +142,6 @@ natickModule.factory('FormService', [function() {
         .done(function(data) {
           console.log('Requirement created: ' + JSON.stringify(data, null, 2));
           requirement = data;
-          
-          createTestRequest();
         });
 
     }

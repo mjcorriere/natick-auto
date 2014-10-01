@@ -16,7 +16,7 @@ natickModule.config(function($routeProvider) {
 	$routeProvider
 		.when('/', {
 			templateUrl 	: 'partials/dashboard.html',
-			controller 		: 'mainController'
+			controller 		: 'dashboardController'
 		})
 		.when('/joboverview', {
 			templateUrl		: 'partials/joboverview.html',

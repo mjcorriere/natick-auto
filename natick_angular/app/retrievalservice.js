@@ -1,31 +1,6 @@
 natickModule.factory('RetrievalService', function() {
-
-  var jobs = [
-    {
-      'id'              : '00145',
-      'customer'        : 'Draper Laboratory',
-      'tests'           : {
-        'pending'       : ['Break strength', 'Visual shade'],
-        'completed'     : ['Moisture absorption']
-      }
-    }];
-  
+ 
   RetrievalService = {};
-
-  // RetrievalService.getGeneric = function() {
-  //   var generic = [];
-  //   $.get(dbUrl + '/Resource/id')
-  //     .done(function(response) {
-  //       generic = response;
-  //     });
-
-  //   // Hopefully, the magic of closures will update the $scope variable in the
-  //   // calling controller. This way we don't have to expose the idea of
-  //   // promises to the controller. It just gets a placeholder variable until
-  //   // the request completes.
-
-  //   return generic;
-  // }
 
   RetrievalService.getAllCustomers = function() {
     
@@ -153,12 +128,9 @@ natickModule.factory('RetrievalService', function() {
                 jobList[j].tests = jobList[j].tests + ', ' + subTest.test_name;
               }
             }
-
           }
         }
-
       }
-
     }
 
     if (Global.DEBUG) {
@@ -167,32 +139,70 @@ natickModule.factory('RetrievalService', function() {
     }
 
     return jobList;
-
   }
 
   RetrievalService.getPendingTests = function(jobid) {
     var pendingTests = [];
+    var items, testRequests, subTests;
 
-    // DB Query
+    items = RetrievalService.getItems(jobid);
 
+    for(var i = 0; i < items.length; i++) {
+      var item = items[i];
+      testRequests = RetrievalService.getTestRequests(item.id);
+      for(var j = 0; j < testRequests.length; j++) {
+        var testRequest = testRequests[j];
+        subTests = RetrievalService.getSubTests(testRequest.id);
+        for(var k = 0; k < subTests.length; k++) {
+          var subTest = subTests[k];
+          if (subTest.complete_date == '') {
+            pendingTests.push(subTests.test_name);
+          } 
+        }
+      }
+    }
     return pendingTests;
   }
 
   RetrievalService.getCompletedTests = function(jobid) {
     var completedTests = [];
+    var items, testRequests, subTests;
 
-    // DB Query
+    items = RetrievalService.getItems(jobid);
 
+    for(var i = 0; i < items.length; i++) {
+      var item = items[i];
+      testRequests = RetrievalService.getTestRequests(item.id);
+      for(var j = 0; j < testRequests.length; j++) {
+        var testRequest = testRequests[j];
+        subTests = RetrievalService.getSubTests(testRequest.id);
+        for(var k = 0; k < subTests.length; k++) {
+          var subTest = subTests[k];
+          if (subTest.complete_date != '') {
+            completedTests.push(subTest.test_name);
+          } 
+        }
+      }
+    }
     return completedTests;
   }
 
   RetrievalService.getCustomer = function(jobid) {
     var customer = '';
-
-    // DB Query
-
+    
+    $.ajax({
+      url: Global.dbUrl + '/ServiceRequest/' + jobid,
+      async: false
+    }).success(function(data) {
+      var customerID = data.customer_id;
+      $.ajax({
+        url: Global.dbUrl + '/Customer/' + customerID,
+        async: false
+      }).success(function(data) {
+        customer = data.name;
+      });
+    });
     return customer;
-
   }
 
   return RetrievalService;
