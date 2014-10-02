@@ -1,5 +1,5 @@
 natickModule.controller('joboverviewController', 
-  ['$scope', '$routeParams', 'MockRetrievalService', 
+  ['$scope', '$routeParams', 'RetrievalService', 
   function($scope, $routeParams, RetrievalService) {
 
     $scope.jobid          = $routeParams.jobid;

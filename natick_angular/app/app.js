@@ -1,7 +1,7 @@
 'use strict'
 
 var Global = {
-	DEBUG : false,
+	DEBUG : true,
 	dbUrl : 'http://natick2.draper.com/main'
 };
 

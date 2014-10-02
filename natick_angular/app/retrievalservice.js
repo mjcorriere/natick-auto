@@ -110,35 +110,11 @@ natickModule.factory('RetrievalService', function() {
 
       for(var j = 0; j < serviceRequests.length; j++) {
         var serviceRequest = serviceRequests[j];
-
-        //items = RetrievalService.getItems(serviceRequest.id);
-
-        //if (items.length > 0) {
           jobList.push({
             id: serviceRequest.id.toString(),
             dueDate: new Date(serviceRequest.due_date).toLocaleDateString(),
             customer: customer.name,
           });
-        //}
-
-        // for(var k = 0; k < items.length; k++) {
-        //   var item = items[k];
-        //   testRequests = RetrievalService.getTestRequests(item.id);
-
-        //   for(var m = 0; m < testRequests.length; m++) {
-        //     var testRequest = testRequests[m];
-        //     subTests = RetrievalService.getSubTests(testRequest.id);
-
-        //     for(var n = 0; n < subTests.length; n++) {
-        //       var subTest = subTests[n];
-        //       if (jobList[j].tests == '') {
-        //         jobList[j].tests = subTest.test_name;
-        //       } else {
-        //         jobList[j].tests = jobList[j].tests + ', ' + subTest.test_name;
-        //       }
-        //     }
-        //   }
-        // }
       }
     }
 
@@ -151,6 +127,8 @@ natickModule.factory('RetrievalService', function() {
   }
 
   RetrievalService.getPendingTests = function(jobid) {
+    console.log('Getting pending tests for job ' + jobid);
+
     var pendingTests = [];
     var items, testRequests, subTests;
 
@@ -164,12 +142,14 @@ natickModule.factory('RetrievalService', function() {
         subTests = RetrievalService.getSubTests(testRequest.id);
         for(var k = 0; k < subTests.length; k++) {
           var subTest = subTests[k];
-          if (subTest.complete_date == '') {
-            pendingTests.push(subTests.test_name);
+          console.log(subTest);
+          if (subTest.complete_date == '' || subTest.complete_date == null) {
+            pendingTests.push(subTest.test_name);
           } 
         }
       }
     }
+    console.log('pending test list ', pendingTests)
     return pendingTests;
   }
 
@@ -187,7 +167,7 @@ natickModule.factory('RetrievalService', function() {
         subTests = RetrievalService.getSubTests(testRequest.id);
         for(var k = 0; k < subTests.length; k++) {
           var subTest = subTests[k];
-          if (subTest.complete_date != '') {
+          if (subTest.complete_date != '' && subTest.complete_date != null) {
             completedTests.push(subTest.test_name);
           } 
         }

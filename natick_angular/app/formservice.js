@@ -1,4 +1,4 @@
-natickModule.factory('FormService', [function() {
+natickModule.factory('FormService', ['$location', function($location) {
   
   var formData = {};
 
@@ -185,16 +185,16 @@ natickModule.factory('FormService', [function() {
         var test = subTests[key];
         if(test.required) {
           var newSubTest = {
-            'test_name'     : test.displayName,
-            'test_method'   : test.testMethod,
-            'test_data'     : test.testData,
-            'test_area'     : 'unknown',
-            'spec_limit'    : 'FILL ME IN',
-            'special_instr' : '',
-            'assignee'      : 'admin',
-            'start_date'    : new Date().toISOString(),
-            'due_date'      : new Date().toISOString(),
-            'test_request'  : test_request.id
+            'test_name'         : test.displayName,
+            'test_options'      : test.testMethod,
+            'test_data'         : test.testData,
+            'test_area'         : 'unknown',
+            'spec_limit'        : 'FILL ME IN',
+            'special_instr'     : '',
+            'assignee'          : 'admin',
+            'start_date'        : new Date().toISOString(),
+            'due_date'          : new Date().toISOString(),
+            'test_request_id'   : test_request.id
           };
           if(test.name == 'breakstrength') {
             console.log('we have break strength');
@@ -205,16 +205,13 @@ natickModule.factory('FormService', [function() {
               newSubTest.test_data.fill = [];
             }
           }
-          console.log('submit this test: ', JSON.stringify(newSubTest, null, 2));
-          // $.post(Global.dbUrl + '/SubTest/0/',
-          // newSubTest
-          // )
-          // .done(function(data) {
-          //   console.log('Test Request created: ' + JSON.stringify(data, null, 2));
-          //   test_request = data;
-          // });
-          
-  
+          $.post(Global.dbUrl + '/SubTest/0/',
+          newSubTest
+          )
+          .done(function(data) {
+            console.log('Test Request created: ' + JSON.stringify(data, null, 2));
+            test_request = data;
+          });
         }  
       }
     }
