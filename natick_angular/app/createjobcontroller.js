@@ -10,6 +10,8 @@ natickModule.controller('createjobController',
       // Yes/no prompt goes here. Warn of data loss.
       console.log('User navigated away from form creation');
       FormService.reset();
+    } else {
+      // validate current form ?
     }
 
     console.log('Current: ' + current);

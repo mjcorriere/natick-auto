@@ -8,13 +8,20 @@ natickModule.factory('FormService', [function() {
         required: false
         , warp: false
         , fill: false
+        , warpSpecLimit: ''
+        , fillSpecLimit: ''
+        , testData: {}
         , testMethod: '0'
         , name: 'breakstrength'
+        , displayName: 'Break strength'
       },
       visualshade: {
         required: false
+        , specLimit: ''
+        , testData: []
         , testMethod: '0'
         , name: 'visualshade'
+        , displayName: 'Visual shade evaluation'
       }
     }
   };
@@ -168,12 +175,49 @@ natickModule.factory('FormService', [function() {
     }
 
     function createSubTest() {
-      console.log('Placeholder. Need to implement subtest');
       // Make sure you create the test name correctly. It should have spaces
       // for pretty printing. Remove spaces and uppercase letters when using
       // the name to change to the route (:jobid/testname)
-    }
+      
+      var subTests = formData.subtests;
 
+      for (key in subTests) {
+        var test = subTests[key];
+        if(test.required) {
+          var newSubTest = {
+            'test_name'     : test.displayName,
+            'test_method'   : test.testMethod,
+            'test_data'     : test.testData,
+            'test_area'     : 'unknown',
+            'spec_limit'    : 'FILL ME IN',
+            'special_instr' : '',
+            'assignee'      : 'admin',
+            'start_date'    : new Date().toISOString(),
+            'due_date'      : new Date().toISOString(),
+            'test_request'  : test_request.id
+          };
+          if(test.name == 'breakstrength') {
+            console.log('we have break strength');
+            if (test.warp) {
+              newSubTest.test_data.warp = [];
+            }
+            if (test.fill) {
+              newSubTest.test_data.fill = [];
+            }
+          }
+          console.log('submit this test: ', JSON.stringify(newSubTest, null, 2));
+          // $.post(Global.dbUrl + '/SubTest/0/',
+          // newSubTest
+          // )
+          // .done(function(data) {
+          //   console.log('Test Request created: ' + JSON.stringify(data, null, 2));
+          //   test_request = data;
+          // });
+          
+  
+        }  
+      }
+    }
   }
 
   return FormService;

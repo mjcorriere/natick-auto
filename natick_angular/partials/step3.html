@@ -6,9 +6,31 @@
       <div class='form-group'>
         <flatui-checkbox model='formData.subtests.breakstrength.required' label="'Break Strength'" value='tests.breakstrength.id'></flatui-checkbox>
         <div ng-show='formData.subtests.breakstrength.required' class='testoptions'>
-          <label>Pull Direction(s)</label>
-          <flatui-checkbox model='formData.subtests.breakstrength.warp' label="'Warp'" value=''></flatui-checkbox>
-          <flatui-checkbox model='formData.subtests.breakstrength.fill' label="'Fill'" value=''></flatui-checkbox>
+          <table class='breakstrength-opt'>
+            <col style='width: 50%'>
+            <col style='width: 50%'>
+            <thead>
+              <tr>
+                <th><label>Pull Direction(s)</label></th>
+                <th><label>Spec Limit</label></th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <flatui-checkbox model='formData.subtests.breakstrength.warp' label="'Warp'" value=''></flatui-checkbox>
+                </td>
+                <td><input type='text' ng-model='formData.subtests.breakstrength.warpSpecLimit' class='form-control input-sm spec-limit'></td>
+              </tr>
+              <tr>
+                <td>
+                  <flatui-checkbox model='formData.subtests.breakstrength.fill' label="'Fill'" value=''></flatui-checkbox>
+                </td>
+                <td><input type='text' ng-model='formData.subtests.breakstrength.fillSpecLimit'class='form-control input-sm spec-limit'></td>
+              </tr>
+            </tbody>
+
+          </table>
+
           <label>Test Method</label>
             <select ng-model='formData.subtests.breakstrength.testMethod' name='breakstrength-tm' class='mbn' style=''>
                 <option value='0' selected='selected'>Select Test Method</option>
@@ -30,8 +52,7 @@
       <a href='#createjob/step2' class='btn btn-default'>
         <span class='fui-arrow-left'></span> Back
       </a>
-      <a href='#createjob/step4' class='btn btn-primary pull-right'>
-        Next &nbsp;<span class='fui-arrow-right'></span>
+      <a ng-click='$event.preventDefault(); submit()' href='#' class='btn btn-primary pull-right'><span class='fui-check'></span>&nbsp; Submit</a>
       </a>
     </div>       
   </div>

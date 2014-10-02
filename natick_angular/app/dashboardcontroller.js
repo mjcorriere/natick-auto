@@ -1,7 +1,8 @@
 natickModule.controller('dashboardController', 
-  ['$scope', 'MockRetrievalService', function($scope, RetrievalService) {
+  ['$scope', 'RetrievalService', function($scope, RetrievalService) {
 
   $scope.jobList = RetrievalService.getJobList();
+  console.log('Job list: ', $scope.jobList);
 
 }]);
 

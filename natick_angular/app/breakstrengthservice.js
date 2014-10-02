@@ -7,7 +7,7 @@ natickModule.factory('BreakStrengthService', [function() {
   // Keep a reference to the subtest ID once we get it so we don't have to
   // query it from the poor DB interface multiple times ... ?
 
-  //Retreieve tests from DB; These are placeholders;
+  // Retreieve tests from DB; These are placeholders;
 
   var fillTest = [];
 
@@ -47,8 +47,17 @@ natickModule.factory('BreakStrengthService', [function() {
 
   var BreakStrengthService = {};
 
+  BreakStrengthService.isWarpRequired = function(jobid) {
+
+  }
+
+  BreakStrengthService.isFillRequired = function(jobid) {
+
+  }
+
   BreakStrengthService.warpTest = function(jobid) {
     // warpTest = $.get() ...
+    // 
     return warpTest;
   }
 

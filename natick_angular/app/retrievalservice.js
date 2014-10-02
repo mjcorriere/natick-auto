@@ -8,10 +8,10 @@ natickModule.factory('RetrievalService', function() {
     var customers = [];
     
     $.ajax({
-      url: Global.dbUrl + '/Customer/26/',
+      url: Global.dbUrl + '/Customer/all/',
       async: false
     }).success(function(data) {
-      customers = [data];
+      customers = data;
     });
 
     return customers;
@@ -61,6 +61,8 @@ natickModule.factory('RetrievalService', function() {
       async: false
     }).success(function(data) {
      testRequests = data.test_requests;
+    }).fail(function(data) {
+      $('body').append(data.responseText);
     });    
 
     return testRequests;        
@@ -78,6 +80,8 @@ natickModule.factory('RetrievalService', function() {
       async: false
     }).success(function(data) {
       subTests = data.sub_tests;
+    }).fail(function(data) {
+      $('body').append(data.responseText);
     });    
 
     return subTests;           
@@ -100,36 +104,41 @@ natickModule.factory('RetrievalService', function() {
     for(var i = 0; i < customers.length; i++) {
       var customer = customers[i];
       serviceRequests = (RetrievalService.getServiceRequests(customer.id));
+      console.log("Service Requests for " + customer.name);
+      console.log(serviceRequests);
+
 
       for(var j = 0; j < serviceRequests.length; j++) {
         var serviceRequest = serviceRequests[j];
 
-        jobList[j] = {
-          id: serviceRequest.id.toString(),
-          customer: customer.name,
-          tests: ''
-        }
+        //items = RetrievalService.getItems(serviceRequest.id);
 
-        items = RetrievalService.getItems(serviceRequest.id);
+        //if (items.length > 0) {
+          jobList.push({
+            id: serviceRequest.id.toString(),
+            dueDate: new Date(serviceRequest.due_date).toLocaleDateString(),
+            customer: customer.name,
+          });
+        //}
 
-        for(var k = 0; k < items.length; k++) {
-          var item = items[k];
-          testRequests = RetrievalService.getTestRequests(item.id);
+        // for(var k = 0; k < items.length; k++) {
+        //   var item = items[k];
+        //   testRequests = RetrievalService.getTestRequests(item.id);
 
-          for(var m = 0; m < testRequests.length; m++) {
-            var testRequest = testRequests[m];
-            subTests = RetrievalService.getSubTests(testRequest.id);
+        //   for(var m = 0; m < testRequests.length; m++) {
+        //     var testRequest = testRequests[m];
+        //     subTests = RetrievalService.getSubTests(testRequest.id);
 
-            for(var n = 0; n < subTests.length; n++) {
-              var subTest = subTests[n];
-              if (jobList[j].tests == '') {
-                jobList[j].tests = subTest.test_name;
-              } else {
-                jobList[j].tests = jobList[j].tests + ', ' + subTest.test_name;
-              }
-            }
-          }
-        }
+        //     for(var n = 0; n < subTests.length; n++) {
+        //       var subTest = subTests[n];
+        //       if (jobList[j].tests == '') {
+        //         jobList[j].tests = subTest.test_name;
+        //       } else {
+        //         jobList[j].tests = jobList[j].tests + ', ' + subTest.test_name;
+        //       }
+        //     }
+        //   }
+        // }
       }
     }
 
