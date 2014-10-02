@@ -1,13 +1,15 @@
 natickModule.controller('breakstrengthController', 
-  ['$scope', '$location', '$routeParams', 'MockRetrievalService', 'BreakStrengthService',
+  ['$scope', '$location', '$routeParams', 'RetrievalService', 'BreakStrengthService',
   function($scope, $location, $routeParams, RetrievalService, BreakStrengthService) {
+
+    $scope.jobid            = $routeParams.jobid;
+
+    BreakStrengthService.retrieveData($scope.jobid);
 
     // Assume nothing is requried. Ask DB
     $scope.isWarpRequired   = true;
     $scope.isFillRequired   = true;
     $scope.areBothRequired  = true;
-
-    $scope.jobid            = $routeParams.jobid;
 
     // Pull these from DB
 

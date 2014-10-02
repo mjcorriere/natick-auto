@@ -1,4 +1,5 @@
-natickModule.factory('BreakStrengthService', [function() {
+natickModule.factory('BreakStrengthService', 
+  ['RetrievalService', function(RetrievalService) {
 
   // var fillTest = [];
   // var warpTest = [];
@@ -9,35 +10,14 @@ natickModule.factory('BreakStrengthService', [function() {
 
   // Retreieve tests from DB; These are placeholders;
 
+  var subTestID = '';
+  var warpTest = [];
   var fillTest = [];
-
-  var warpTest = [
-      {
-        strength: '120',
-        elongation: '115',
-        notes: 'nothing to report',
-      },
-      {
-        strength: '105',
-        elongation: '100',
-        notes: 'oddities',
-      },
-      {
-        strength: '156',
-        elongation: '25',
-        notes: 'anomolies',
-      },
-      {
-        strength: '169',
-        elongation: '28',
-        notes: 'things',
-      },
-      {
-        strength: 'over 9000',
-        elongation: '50',
-        notes: 'there are a lot of things to say about this sample. I want to write something longer to see how it looks in the text area of the modal that pops up for this sample.',
-      }
-  ];
+  var isWarpRequired = false;
+  var isFillRequired = false;
+  var nomenclature = '';
+  var specification = '';
+  var testMethod = '';
 
   var blankSample = {
         strength: '',
@@ -47,12 +27,62 @@ natickModule.factory('BreakStrengthService', [function() {
 
   var BreakStrengthService = {};
 
-  BreakStrengthService.isWarpRequired = function(jobid) {
+  BreakStrengthService.retrieveData = function(jobid) {
+
+    // Let's get some data for our form. This should be called first in the
+    // break strength controller. Poor, I know, but we're running out of time.
+
+    var test = this.getTest(jobid);
+    var test_data = JSON.parse(test.test_data);
+
+    subTestID = test.id;
+
+    if(test_data.warp != []) {
+      warpTest = test_data.warp;
+      isWarpRequired = true;
+    }
+
+    if(test_data.fill != []) {
+      fillTest = test_data.fill;
+      isFillRequired = true;
+    }
 
   }
 
-  BreakStrengthService.isFillRequired = function(jobid) {
+  BreakStrengthService.getTest = function(jobid) {
+    console.log('Getting break strength test for job ' + jobid);
 
+    var test;
+
+    // We must work our way from items on down to the subtest we want.
+    // Clunky but this is the interface provided by the DB ...
+    items = RetrievalService.getItems(jobid);
+
+    for(var i = 0; i < items.length; i++) {
+      var item = items[i];
+      testRequests = RetrievalService.getTestRequests(item.id);
+      for(var j = 0; j < testRequests.length; j++) {
+        var testRequest = testRequests[j];
+        subTests = RetrievalService.getSubTests(testRequest.id);
+        for(var k = 0; k < subTests.length; k++) {
+          var subTest = subTests[k];
+          console.log(subTest);
+          if (subTest.test_name == 'Break strength') {
+            test = subTest;
+          }
+        }
+      }
+    }
+    console.log('break strength test found: ', test)
+    return test;
+  }
+
+  BreakStrengthService.isWarpRequired = function() {
+    return isWarpRequired;
+  }
+
+  BreakStrengthService.isFillRequired = function() {
+    return isFillRequired;
   }
 
   BreakStrengthService.warpTest = function(jobid) {
@@ -84,8 +114,26 @@ natickModule.factory('BreakStrengthService', [function() {
 
   BreakStrengthService.saveData = function() {
     console.log('user moved away from the break test');
-    console.log('submit partial form to DB to retain data');
-    //$.post(dbUrl + '/SubTest/')
+    console.log('saving subtestID ' + subTestID);
+
+    var newTestData = {
+      "test_data": angular.toJson({
+        "warp": warpTest,
+        "fill": fillTest,
+      })
+    };
+
+//    newTestData.test_data = angular.toJson(newTestData.test_data);
+
+    $.post(Global.dbUrl + '/SubTest/' + subTestID + '/',
+          newTestData
+          )
+          .done(function(data) {
+            console.log('Test Data saved: ' + JSON.stringify(data, null, 2));
+          })
+          .fail(function(data) {
+            $('body').append(data.responseText);
+          });    
   }
 
   BreakStrengthService.completeTest = function() {

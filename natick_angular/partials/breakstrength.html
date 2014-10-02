@@ -1,5 +1,22 @@
 
-<div ng-repeat='sample in warpTest' class='modal' id="{{'notesModal' + ($index + 1)}}">
+<div ng-repeat='sample in warpTest' class='modal' id="{{'warpNotesModal' + ($index + 1)}}">
+  <div class='modal-dialog'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <button type='button' class='close' data-dismiss='modal'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>
+        <h4 class='modal-title'>Notes for Sample {{$index + 1}}</h4>
+      </div>
+      <div class='modal-body'>
+        <textarea class='form-control' ng-model='sample.notes'></textarea>
+      </div>
+      <div class='modal-footer'>
+        <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div ng-repeat='sample in fillTest' class='modal' id="{{'fillNotesModal' + ($index + 1)}}">
   <div class='modal-dialog'>
     <div class='modal-content'>
       <div class='modal-header'>
@@ -65,7 +82,7 @@
                 <td><input type='text' class='form-control input-sm' ng-model='sample.strength'></td>
                 <td><input type='text' class='form-control input-sm' ng-model='sample.elongation'></td>
                 <td>
-                  <a ng-click='$event.preventDefault()' href='#' class='btn btn-sm btn-default' data-toggle="modal" data-target="{{'#notesModal' + ($index + 1)}}">
+                  <a ng-click='$event.preventDefault()' href='#' class='btn btn-sm btn-default' data-toggle="modal" data-target="{{'#warpNotesModal' + ($index + 1)}}">
                     <span class='glyphicon glyphicon-file'></span>
                   </a>
                 </td>                  
@@ -103,7 +120,7 @@
                 <td><input type='text' class='form-control input-sm' ng-model='sample.strength'></td>
                 <td><input type='text' class='form-control input-sm' ng-model='sample.elongation'></td>
                 <td>
-                  <a ng-click='$event.preventDefault()' href='#' class='btn btn-sm btn-default' data-toggle="modal" data-target="{{'#notesModal' + ($index + 1)}}">
+                  <a ng-click='$event.preventDefault()' href='#' class='btn btn-sm btn-default' data-toggle="modal" data-target="{{'#fillNotesModal' + ($index + 1)}}">
                     <span class='glyphicon glyphicon-file'></span>
                   </a>
                 </td>                  
