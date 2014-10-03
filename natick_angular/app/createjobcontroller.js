@@ -4,6 +4,7 @@ natickModule.controller('createjobController',
   function($scope, $location, $timeout, FormService) {
 
   var submittingForm = false;
+  $scope.submitted = false;
 
   $scope.$on('$routeChangeStart', function(event, next, current) {
     
@@ -43,15 +44,31 @@ natickModule.controller('createjobController',
   
 
   $scope.validateStep1 = function() {
-
+    console.log('validate step1');
+    $scope.submitted = true;
+    console.log($scope.step1form.$invalid);
+    if (!$scope.step1form.$invalid) {
+      $location.path('/createjob/step2');
+    }
   }
 
   $scope.validateStep2 = function() {
-
+    console.log('validate step2');
+    $scope.submitted = true;
+    console.log($scope.step2form.$invalid);
+    if (!$scope.step2form.$invalid) {
+      $location.path('/createjob/step3');
+    }
   }
 
   $scope.validateStep3 = function() {
-
+    console.log('validate step3');
+    $scope.submitted = true;
+    console.log($scope.step3form.$invalid);
+    if (!$scope.step3form.$invalid) {
+      // submit the form
+      console.log('SUBMIT THE FORM. CODE IT UP');
+    }
   }
 
   $scope.ppFormData = null;
