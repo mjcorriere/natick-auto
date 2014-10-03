@@ -9,14 +9,13 @@ natickModule.factory('TestSummaryService',
 
   var TestSummaryService = {};
 
-  TestSummaryService.retrieveData = function(jobid) {
+  TestSummaryService.retrieveData = function(jobid, testName) {
 
     // Let's get some data for our form. This should be called first in the
     // test controller. Poor, I know, but we're running out of time.
 
-    console.log('RETREIVING DATA');
-    var test      = this.getTest(jobid);
-    var test_data = JSON.parse(test.test_data);
+    console.log('RETREIVING DATA for', testName);
+    var test      = this.getTest(jobid, testName);
 
     dueDate       = RetrievalService.getDueDate(jobid);
     subTestID     = test.id;
@@ -25,14 +24,14 @@ natickModule.factory('TestSummaryService',
 
   }
 
-  TestSummaryService.getTest = function(jobid) {
-    console.log('Getting break strength test for job ' + jobid);
+  TestSummaryService.getTest = function(jobid, testName) {
+    console.log('Getting', testName, 'for job', jobid);
 
     var test;
 
     // We must work our way from items on down to the subtest we want.
     // Clunky but this is the interface provided by the DB ...
-    items = RetrievalService.getItems(jobid);
+    items = RetrievalService.getItems(jobid, testName);
 
     for(var i = 0; i < items.length; i++) {
       var item = items[i];
@@ -43,7 +42,7 @@ natickModule.factory('TestSummaryService',
         for(var k = 0; k < subTests.length; k++) {
           var subTest = subTests[k];
           console.log(subTest);
-          if (subTest.test_name == 'Break strength') {
+          if (subTest.test_name == testName) {
             test = subTest;
             nomenclature = item.nomenclature;
           }
@@ -60,10 +59,6 @@ natickModule.factory('TestSummaryService',
 
   TestSummaryService.testMethod = function() {
     return testMethod;
-  }
-
-  TestSummaryService.specification = function() {
-    return specification;
   }
 
   TestSummaryService.specLimit = function() {

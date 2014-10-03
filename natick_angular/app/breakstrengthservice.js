@@ -6,10 +6,6 @@ natickModule.factory('BreakStrengthService',
   var fillTest = [];
   var isWarpRequired = false;
   var isFillRequired = false;
-  var nomenclature = '';
-  var specification = '';
-  var specLimit = '';
-  var testMethod = '';
 
   var blankSample = {
         strength: '',
@@ -29,9 +25,7 @@ natickModule.factory('BreakStrengthService',
     var test_data = JSON.parse(test.test_data);
 
     subTestID     = test.id;
-    testMethod    = test.test_options;
-    specLimit     = test.spec_limit;
-
+    
     if(test_data.hasOwnProperty('warp')) {
       warpTest = test_data.warp;
       isWarpRequired = true;
@@ -64,7 +58,6 @@ natickModule.factory('BreakStrengthService',
           console.log(subTest);
           if (subTest.test_name == 'Break strength') {
             test = subTest;
-            nomenclature = item.nomenclature;
           }
         }
       }
@@ -170,14 +163,6 @@ natickModule.factory('BreakStrengthService',
       var completeDate = {
         "complete_date": new Date().toISOString()
       };      
-
-      // $.ajax({
-      //   type: 'post'
-      //   , url: Global.dbUrl + '/SubTest/' + subTestID + '/'
-      //   , data: completeDate
-      // }).success(function() {console.log('GAGAGAGA')});
-
-      //$.ajaxSetup({async: false});
 
       $.post(Global.dbUrl + '/SubTest/' + subTestID + '/',
         completeDate

@@ -5,7 +5,7 @@ natickModule.controller('breakstrengthController',
     $scope.jobid            = $routeParams.jobid;
 
     BreakStrengthService.retrieveData($scope.jobid);
-    TestSummaryService.retrieveData($scope.jobid);
+    TestSummaryService.retrieveData($scope.jobid, 'Break strength');
 
     // Assume nothing is requried. Ask DB
     $scope.isWarpRequired   = BreakStrengthService.isWarpRequired();

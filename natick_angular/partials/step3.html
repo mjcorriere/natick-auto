@@ -40,6 +40,8 @@
         </div>
         <flatui-checkbox model='formData.subtests.visualshade.required' label="'Visual Shade Evaluation'" value='tests.visualshade.id'></flatui-checkbox>
         <div ng-show='formData.subtests.visualshade.required' class='testoptions'>
+          <label>Specification Limit</label>
+          <input ng-model='formData.subtests.visualshade.specLimit' class='form-control input-sm'></input>
           <label>Test Method</label>
             <select ng-model='formData.subtests.visualshade.testMethod' name='visualshade-tm' class='mbn' style=''>
                 <option value='0' selected='selected'>Select Test Method</option>

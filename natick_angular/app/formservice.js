@@ -192,7 +192,7 @@ natickModule.factory('FormService', ['$location', function($location) {
             'test_options'      : test.testMethod,
             'test_data'         : test.testData,
             'test_area'         : 'unknown',
-            'spec_limit'        : '',
+            'spec_limit'        : test.specLimit,
             'special_instr'     : '',
             'assignee'          : 'admin',
             'start_date'        : new Date().toISOString(),
