@@ -1,6 +1,6 @@
 <div class='row'>
   <div class='col-xs-12 col-md-6'>
-    <pre>{{ppFormData}}</pre>
+    <pre ng-show='Global.DEBUG'>{{ppFormData}}</pre>
     <h4>Specimen Information</h4>
     <form role='form' id='createJobForm'>
       <div class='form-group'>
@@ -26,7 +26,7 @@
       </div>
       <div class='form-group'>
         <label class='margin-sm' for='standardLink'>Link</label>
-          <input type='text' class='form-control' id='standardLink' name='standardLink' ng-model='formData.standardLink' placeholder='http://link.to/standard/rev'>
+          <input type='url' class='form-control' id='standardLink' name='standardLink' ng-model='formData.standardLink' placeholder='http://link.to/standard/rev'>
       </div>
     </form>
     <div class='job-create-nav'>

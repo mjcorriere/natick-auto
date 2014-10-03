@@ -4,6 +4,8 @@ natickModule.factory('BreakStrengthService',
   var subTestID = '';
   var warpTest = [];
   var fillTest = [];
+  var warpSpecLimit = 'placeholder';
+  var fillSpecLimit = 'placeholder';
   var isWarpRequired = false;
   var isFillRequired = false;
 
@@ -23,8 +25,11 @@ natickModule.factory('BreakStrengthService',
     console.log('RETREIVING DATA');
     var test      = this.getTest(jobid);
     var test_data = JSON.parse(test.test_data);
+    var specLimit = JSON.parse(test.spec_limit);
 
     subTestID     = test.id;
+    warpSpecLimit = specLimit.warp;
+    fillSpecLimit = specLimit.fill;
     
     if(test_data.hasOwnProperty('warp')) {
       warpTest = test_data.warp;
@@ -95,13 +100,13 @@ natickModule.factory('BreakStrengthService',
     return testMethod;
   }
 
-  BreakStrengthService.specification = function() {
-    return specification;
-  }
-
-  BreakStrengthService.specLimit = function() {
-    return specLimit;
+  BreakStrengthService.warpSpecLimit = function() {
+    return warpSpecLimit;
   }  
+
+  BreakStrengthService.fillSpecLimit = function() {
+    return fillSpecLimit;
+  }    
 
   BreakStrengthService.addWarpSample = function() {
     warpTest.push(angular.copy(blankSample));
@@ -122,13 +127,6 @@ natickModule.factory('BreakStrengthService',
   BreakStrengthService.saveData = function() {
     console.log('user moved away from the break test');
     console.log('saving subtestID ' + subTestID);
-
-    // var newTestData = {
-    //   "test_data": angular.toJson({
-    //     "warp": warpTest,
-    //     "fill": fillTest,
-    //   })
-    // };
 
     var newTestData = {
       "test_data": {}

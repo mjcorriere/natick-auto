@@ -3,24 +3,6 @@ natickModule.factory('VisualShadeService', [function() {
   var VisualShadeService = {};
   var testData = [];
   var subTestID = '';
-  
-  // var testData = [
-  //     {
-  //         "color": "Blue",
-  //         "result": "2",
-  //         "notes": "This color is my favorite"
-  //     },
-  //     {
-  //         "color": "Brown",
-  //         "result": "0",
-  //         "notes": ""
-  //     },
-  //     {
-  //         "color": "Chartruese",
-  //         "result": "1",
-  //         "notes": "Lovely."
-  //     }
-  // ];
 
   VisualShadeService.retrieveData = function(jobid) {
 
@@ -101,22 +83,29 @@ natickModule.factory('VisualShadeService', [function() {
   }
 
   VisualShadeService.completeTest = function() {
-    console.log('completing breaktest subtestID', subTestID);
+    console.log('completing visualshade subtestID', subTestID);
       // This function should send the final data and change
       // date completed to the current date and time.
 
     var completeDate = {
       "complete_date": new Date().toISOString()
-    };      
+    };
+
+    console.log('completed on:', completeDate);
 
     $.post(Global.dbUrl + '/SubTest/' + subTestID + '/',
       completeDate
       )
       .done(function(data) {
         console.log('visual shade subID', subTestID, 'completed');
+        console.log(data);
       });
   }    
 
   return VisualShadeService;
 
 }])
+
+
+
+// completed on: Object {complete_date: "2014-10-03T19:47:46.890Z"} 

@@ -8,23 +8,62 @@ natickModule.factory('FormService', ['$location', function($location) {
         required: false
         , warp: false
         , fill: false
-        , warpSpecLimit: ''
-        , fillSpecLimit: ''
+        , warpSpecLimit: ""
+        , fillSpecLimit: ""
         , testData: {}
-        , testMethod: '0'
-        , name: 'breakstrength'
-        , displayName: 'Break strength'
+        , testMethod: "0"
+        , name: "breakstrength"
+        , displayName: "Break strength"
       },
       visualshade: {
         required: false
-        , specLimit: ''
-        , testData: []
-        , testMethod: '0'
-        , name: 'visualshade'
-        , displayName: 'Visual shade'
+        , specLimit: ""
+        , testData: "[]"
+        , testMethod: "0"
+        , name: "visualshade"
+        , displayName: "Visual shade"
       }
     }
   };
+
+  var preFilledForm = {
+    "subtests": {
+      "breakstrength": {
+        "required": true,
+        "warp": false,
+        "fill": true,
+        "specLimit": {
+          "warp": "500",
+          "fill": "250",
+        },
+        "testData": {},
+        "testMethod": "ASTM D 5044",
+        "name": "breakstrength",
+        "displayName": "Break strength"
+      },
+      "visualshade": {
+        "required": true,
+        "specLimit": "Don't be red",
+        "testData": "[]",
+        "testMethod": "AATCC Procedure 9",
+        "name": "visualshade",
+        "displayName": "Visual shade"
+      }
+    },
+    "customerName": "Prefilled Company",
+    "contactName": "No one",
+    "contactEmail": "no@one.com",
+    "contactPhone": "698-987-5641",
+    "contractNo": "123",
+    "dueDate": "2014-10-30",
+    "costQuote": "15000",
+    "itemName": "Big item",
+    "itemType": "Physical object",
+    "nomenclature": "Rope, 50/50 Carbon Fiber and Rocks",
+    "standard": "MIL-C-10001",
+    "standardRev": "F",
+    "standardLink": "none"
+  }  
 
   angular.copy(emptyForm, formData);
   
@@ -39,7 +78,11 @@ natickModule.factory('FormService', ['$location', function($location) {
     angular.copy(emptyForm, formData);
   }
 
-  FormService.submit = function() {
+  FormService.submit = function(debug) {
+
+    console.log('debug: ', debug);
+    if (debug) { angular.copy(preFilledForm, formData); }
+    console.log(formData);
 
     var customer, contact, service_request, 
         item, requirement, test_request, sub_test;
@@ -107,6 +150,9 @@ natickModule.factory('FormService', ['$location', function($location) {
           service_request = data;
           
           createItem();
+        })
+        .fail(function(data) {
+          $('body').append(data.responseText);
         });
 
     }
@@ -186,13 +232,16 @@ natickModule.factory('FormService', ['$location', function($location) {
 
       for (key in subTests) {
         var test = subTests[key];
+        
+        console.log('TEST DATA: ', test.testData);
+
         if(test.required) {
           var newSubTest = {
             'test_name'         : test.displayName,
             'test_options'      : test.testMethod,
             'test_data'         : test.testData,
             'test_area'         : 'unknown',
-            'spec_limit'        : test.specLimit,
+            'spec_limit'        : angular.toJson(test.specLimit),
             'special_instr'     : '',
             'assignee'          : 'admin',
             'start_date'        : new Date().toISOString(),
@@ -222,6 +271,7 @@ natickModule.factory('FormService', ['$location', function($location) {
           .done(function(data) {
             console.log('Sub test created: ' + JSON.stringify(data, null, 2));
             sub_test = data;
+            FormService.reset();
           });
         }  
       }

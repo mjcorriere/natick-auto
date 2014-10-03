@@ -1,6 +1,6 @@
 <div class='row'>
   <div class='col-xs-12 col-md-6'>
-    <pre>{{ppFormData}}</pre>
+    <pre ng-show='Global.DEBUG'>{{ppFormData}}</pre>
     <h4>Tests Required</h4>
     <form role='form'>
       <div class='form-group'>
@@ -12,7 +12,7 @@
             <thead>
               <tr>
                 <th><label>Pull Direction(s)</label></th>
-                <th><label>Spec Limit</label></th>
+                <th><label>Specification Limit</label></th>
             </thead>
             <tbody>
               <tr>
@@ -54,7 +54,7 @@
       <a href='#createjob/step2' class='btn btn-default'>
         <span class='fui-arrow-left'></span> Back
       </a>
-      <a ng-click='$event.preventDefault(); submit()' href='#' class='btn btn-primary pull-right'><span class='fui-check'></span>&nbsp; Submit</a>
+      <a ng-click='$event.preventDefault(); submit(false)' href='#' class='btn btn-primary pull-right'><span class='fui-check'></span>&nbsp; Submit</a>
       </a>
     </div>       
   </div>

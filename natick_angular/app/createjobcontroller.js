@@ -1,6 +1,7 @@
 
 natickModule.controller('createjobController', 
-  ['$scope', '$location', 'FormService', function($scope, $location, FormService) {
+  ['$scope', '$location', '$timeout', 'FormService', 
+  function($scope, $location, $timeout, FormService) {
 
   var submittingForm = false;
 
@@ -11,7 +12,7 @@ natickModule.controller('createjobController',
     if (next.indexOf('createjob') < 0 && !submittingForm) {
       // Yes/no prompt goes here. Warn of data loss.
       console.log('User navigated away from form creation');
-      FormService.reset();
+      //FormService.reset();
     }
 
     console.log('Current: ' + current);
@@ -21,9 +22,23 @@ natickModule.controller('createjobController',
 
   $scope.formData = FormService.formData();
   $scope.submit = function() {
-    FormService.submit();
+    FormService.submit(false);
     submittingForm = true;
-    $location.path('/');
+    // Hacky hack hack. 
+    // TODO: Chain promises in the controller instead of service.
+    $timeout(function() {
+      console.log('TIMING OUT MAN');
+      $location.path('/');
+    }, 500);
+  }
+
+  $scope.debugSubmit = function() {
+    FormService.submit(true);
+    submittingForm = true;
+    $timeout(function() {
+      console.log('TIMING OUT MAN');
+      $location.path('/');
+    }, 500);    
   }
   
 

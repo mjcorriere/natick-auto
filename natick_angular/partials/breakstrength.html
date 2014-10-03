@@ -39,7 +39,7 @@
       <h5 class='job-due-date'>Due {{dueDate}}</h5>
       <h4 class='job-number'>Break Strength</h4>
       <h4 class='job-number'>Job #0000{{jobid}}</h4>
-      <img src='img/camoswatch.png' style='float: right'>
+      <!-- <img src='img/camoswatch.png' style='float: right'> -->
       <div class='job-info'>
         <h5>Item Nomenclature:</h5>
         <p>{{nomenclature}}</p>
@@ -48,10 +48,14 @@
         <h5>Test Method:</h5>
         <p>{{testMethod}}</p>
       </div>
-      <div class='job-info'>
-        <h5>Spec Limit: </h5>
-        <p>{{specLimit}}</p>
+      <div ng-show='isWarpRequired' class='job-info'>
+        <h5>Warp Spec Limit: </h5>
+        <p>{{warpSpecLimit}}</p>
       </div>
+      <div ng-show='isFillRequired' class='job-info'>
+        <h5>Fill Spec Limit: </h5>
+        <p>{{fillSpecLimit}}</p>
+      </div>      
     </div>
     <div class='panel-heading clearfix'>
       <h3 class='panel-title panel-title-lg pull-left'>Test Data</h3>

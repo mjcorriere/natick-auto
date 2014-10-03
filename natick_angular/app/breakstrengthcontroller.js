@@ -17,7 +17,8 @@ natickModule.controller('breakstrengthController',
     $scope.nomenclature     = TestSummaryService.nomenclature();
     $scope.dueDate          = TestSummaryService.dueDate();
     $scope.testMethod       = TestSummaryService.testMethod();
-    $scope.specLimit        = TestSummaryService.specLimit();
+    $scope.warpSpecLimit    = BreakStrengthService.warpSpecLimit();
+    $scope.fillSpecLimit    = BreakStrengthService.fillSpecLimit();
 
     $scope.warpTest         = BreakStrengthService.warpTest($scope.jobid);
     $scope.fillTest         = BreakStrengthService.fillTest($scope.jobid);

@@ -1,13 +1,18 @@
 'use strict'
 
 var Global = {
-	DEBUG : true,
+	DEBUG : false,
 	dbUrl : 'http://natick2.draper.com/main'
+//	dbUrl : 'http://140.?.?.170/main'
 };
 
 // Instantiate the main module.
 // Include the ngRoute (module / package / whatever ?)
-var natickModule = angular.module('natick', ['ngRoute', 'flatuiApp.directives']);
+var natickModule = angular.module('natick', ['ngRoute', 'flatuiApp.directives'])
+	.run(function($rootScope) {
+		// Make the Global variable available to each controller and therefore every view
+		$rootScope.Global = Global;
+	});
 angular.module('flatuiApp.directives', []);
 
 natickModule.config(function($routeProvider) {
