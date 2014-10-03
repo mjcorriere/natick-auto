@@ -7,15 +7,17 @@ natickModule.controller('breakstrengthController',
     BreakStrengthService.retrieveData($scope.jobid);
 
     // Assume nothing is requried. Ask DB
-    $scope.isWarpRequired   = true;
-    $scope.isFillRequired   = true;
-    $scope.areBothRequired  = true;
+    $scope.isWarpRequired   = BreakStrengthService.isWarpRequired();
+    $scope.isFillRequired   = BreakStrengthService.isFillRequired();
+    $scope.areBothRequired  = $scope.isWarpRequired && $scope.isFillRequired;
 
     // Pull these from DB
 
-    $scope.nomenclature     = 'Cloth, 50/50 Nylon and Cotton';
-    $scope.spec             = 'Mil-C-1001';
-    $scope.testMethod       = 'ASTM-D-5034';
+    $scope.nomenclature     = BreakStrengthService.nomenclature();
+    // $scope.spec             = BreakStrengthService.specification();
+    $scope.dueDate          = RetrievalService.getDueDate($scope.jobid);
+    $scope.testMethod       = BreakStrengthService.testMethod();
+    $scope.specLimit        = BreakStrengthService.specLimit();
 
     $scope.warpTest         = BreakStrengthService.warpTest($scope.jobid);
     $scope.fillTest         = BreakStrengthService.fillTest($scope.jobid);

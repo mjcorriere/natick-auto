@@ -17,6 +17,7 @@ natickModule.factory('BreakStrengthService',
   var isFillRequired = false;
   var nomenclature = '';
   var specification = '';
+  var specLimit = '';
   var testMethod = '';
 
   var blankSample = {
@@ -32,17 +33,20 @@ natickModule.factory('BreakStrengthService',
     // Let's get some data for our form. This should be called first in the
     // break strength controller. Poor, I know, but we're running out of time.
 
-    var test = this.getTest(jobid);
+    console.log('RETREIVING DATA');
+    var test      = this.getTest(jobid);
     var test_data = JSON.parse(test.test_data);
 
-    subTestID = test.id;
+    subTestID     = test.id;
+    testMethod    = test.test_options;
+    specLimit     = test.spec_limit;
 
-    if(test_data.warp != []) {
+    if(test_data.hasOwnProperty('warp')) {
       warpTest = test_data.warp;
       isWarpRequired = true;
     }
 
-    if(test_data.fill != []) {
+    if(test_data.hasOwnProperty('fill')) {
       fillTest = test_data.fill;
       isFillRequired = true;
     }
@@ -69,6 +73,7 @@ natickModule.factory('BreakStrengthService',
           console.log(subTest);
           if (subTest.test_name == 'Break strength') {
             test = subTest;
+            nomenclature = item.nomenclature;
           }
         }
       }
@@ -78,10 +83,12 @@ natickModule.factory('BreakStrengthService',
   }
 
   BreakStrengthService.isWarpRequired = function() {
+    console.log('iswarp ' + isWarpRequired);
     return isWarpRequired;
   }
 
   BreakStrengthService.isFillRequired = function() {
+    console.log('isfill ' + isFillRequired);
     return isFillRequired;
   }
 
@@ -95,6 +102,22 @@ natickModule.factory('BreakStrengthService',
     // fillTest = $.get() ...
     return fillTest;
   }
+
+  BreakStrengthService.nomenclature = function() {
+    return nomenclature;
+  }
+
+  BreakStrengthService.testMethod = function() {
+    return testMethod;
+  }
+
+  BreakStrengthService.specification = function() {
+    return specification;
+  }
+
+  BreakStrengthService.specLimit = function() {
+    return specLimit;
+  }  
 
   BreakStrengthService.addWarpSample = function() {
     warpTest.push(angular.copy(blankSample));
@@ -116,14 +139,26 @@ natickModule.factory('BreakStrengthService',
     console.log('user moved away from the break test');
     console.log('saving subtestID ' + subTestID);
 
+    // var newTestData = {
+    //   "test_data": angular.toJson({
+    //     "warp": warpTest,
+    //     "fill": fillTest,
+    //   })
+    // };
+
     var newTestData = {
-      "test_data": angular.toJson({
-        "warp": warpTest,
-        "fill": fillTest,
-      })
+      "test_data": {}
     };
 
-//    newTestData.test_data = angular.toJson(newTestData.test_data);
+    if(isWarpRequired) {
+      newTestData.test_data.warp = warpTest;
+    }
+
+    if(isFillRequired) {
+      newTestData.test_data.fill = fillTest;
+    }
+
+    newTestData.test_data = angular.toJson(newTestData.test_data);
 
     $.post(Global.dbUrl + '/SubTest/' + subTestID + '/',
           newTestData
@@ -137,9 +172,29 @@ natickModule.factory('BreakStrengthService',
   }
 
   BreakStrengthService.completeTest = function() {
-      console.log('placeholder for submitting break test.');
+      console.log('completing breaktest subtestID', subTestID);
       // This function should send the final data and change
       // date completed to the current date and time.
+
+      var completeDate = {
+        "complete_date": new Date().toISOString()
+      };      
+
+      // $.ajax({
+      //   type: 'post'
+      //   , url: Global.dbUrl + '/SubTest/' + subTestID + '/'
+      //   , data: completeDate
+      // }).success(function() {console.log('GAGAGAGA')});
+
+      //$.ajaxSetup({async: false});
+
+      $.post(Global.dbUrl + '/SubTest/' + subTestID + '/',
+        completeDate
+        )
+        .done(function(data) {
+          console.log('breaktest subID', subTestID, 'completed');
+        });
+
   }
 
   return BreakStrengthService;

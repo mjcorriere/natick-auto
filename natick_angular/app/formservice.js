@@ -21,7 +21,7 @@ natickModule.factory('FormService', ['$location', function($location) {
         , testData: []
         , testMethod: '0'
         , name: 'visualshade'
-        , displayName: 'Visual shade evaluation'
+        , displayName: 'Visual shade'
       }
     }
   };
@@ -49,6 +49,8 @@ natickModule.factory('FormService', ['$location', function($location) {
       'name'  : formData.customerName
     };
 
+    console.log('SUBMITTING CUSTOMER');
+
     $.post(Global.dbUrl + '/Customer/0/',
         newCustomer
       )
@@ -56,6 +58,7 @@ natickModule.factory('FormService', ['$location', function($location) {
         console.log('Customer created: ' + JSON.stringify(data, null, 2));
         customer = data;
 
+        console.log('SUBMITTING CONTACT');
         createContact();
 
       });
@@ -189,7 +192,7 @@ natickModule.factory('FormService', ['$location', function($location) {
             'test_options'      : test.testMethod,
             'test_data'         : test.testData,
             'test_area'         : 'unknown',
-            'spec_limit'        : 'FILL ME IN',
+            'spec_limit'        : '',
             'special_instr'     : '',
             'assignee'          : 'admin',
             'start_date'        : new Date().toISOString(),
@@ -198,19 +201,27 @@ natickModule.factory('FormService', ['$location', function($location) {
           };
           if(test.name == 'breakstrength') {
             console.log('we have break strength');
+            console.log('warp, fill', test.warp, test.fill);
+
             if (test.warp) {
+              console.log('warp detected adding warp');
               newSubTest.test_data.warp = [];
+              console.log(newSubTest.test_data);
             }
             if (test.fill) {
+              console.log('fill detected adding fill');
               newSubTest.test_data.fill = [];
+              console.log(newSubTest.test_data)
             }
+            newSubTest.test_data = JSON.stringify(newSubTest.test_data);
+            console.log(newSubTest);            
           }
           $.post(Global.dbUrl + '/SubTest/0/',
           newSubTest
           )
           .done(function(data) {
-            console.log('Test Request created: ' + JSON.stringify(data, null, 2));
-            test_request = data;
+            console.log('Sub test created: ' + JSON.stringify(data, null, 2));
+            sub_test = data;
           });
         }  
       }

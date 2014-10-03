@@ -176,6 +176,21 @@ natickModule.factory('RetrievalService', function() {
     return completedTests;
   }
 
+  RetrievalService.getDueDate = function(jobid) {
+    var dueDate = '';
+
+    $.ajax({
+      url: Global.dbUrl + '/ServiceRequest/' + jobid + '/',
+      async: false
+    })
+    .done(function(data) {
+      dueDate = new Date(data.due_date).toLocaleDateString();
+    });
+
+    return dueDate;
+
+  }
+
   RetrievalService.getCustomer = function(jobid) {
     var customer = '';
     
