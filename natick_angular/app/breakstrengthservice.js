@@ -1,15 +1,6 @@
 natickModule.factory('BreakStrengthService', 
   ['RetrievalService', function(RetrievalService) {
 
-  // var fillTest = [];
-  // var warpTest = [];
-
-  // var subTestID ?
-  // Keep a reference to the subtest ID once we get it so we don't have to
-  // query it from the poor DB interface multiple times ... ?
-
-  // Retreieve tests from DB; These are placeholders;
-
   var subTestID = '';
   var warpTest = [];
   var fillTest = [];

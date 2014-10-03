@@ -1,10 +1,11 @@
 natickModule.controller('breakstrengthController', 
-  ['$scope', '$location', '$routeParams', 'RetrievalService', 'BreakStrengthService',
-  function($scope, $location, $routeParams, RetrievalService, BreakStrengthService) {
+  ['$scope', '$location', '$routeParams', 'RetrievalService', 'BreakStrengthService', 'TestSummaryService',
+  function($scope, $location, $routeParams, RetrievalService, BreakStrengthService, TestSummaryService) {
 
     $scope.jobid            = $routeParams.jobid;
 
     BreakStrengthService.retrieveData($scope.jobid);
+    TestSummaryService.retrieveData($scope.jobid);
 
     // Assume nothing is requried. Ask DB
     $scope.isWarpRequired   = BreakStrengthService.isWarpRequired();
@@ -13,11 +14,10 @@ natickModule.controller('breakstrengthController',
 
     // Pull these from DB
 
-    $scope.nomenclature     = BreakStrengthService.nomenclature();
-    // $scope.spec             = BreakStrengthService.specification();
-    $scope.dueDate          = RetrievalService.getDueDate($scope.jobid);
-    $scope.testMethod       = BreakStrengthService.testMethod();
-    $scope.specLimit        = BreakStrengthService.specLimit();
+    $scope.nomenclature     = TestSummaryService.nomenclature();
+    $scope.dueDate          = TestSummaryService.dueDate();
+    $scope.testMethod       = TestSummaryService.testMethod();
+    $scope.specLimit        = TestSummaryService.specLimit();
 
     $scope.warpTest         = BreakStrengthService.warpTest($scope.jobid);
     $scope.fillTest         = BreakStrengthService.fillTest($scope.jobid);
