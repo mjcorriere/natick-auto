@@ -168,7 +168,12 @@ natickModule.factory('RetrievalService', function() {
         for(var k = 0; k < subTests.length; k++) {
           var subTest = subTests[k];
           if (subTest.complete_date != '' && subTest.complete_date != null) {
-            completedTests.push(subTest.test_name);
+            console.log('COMPEATEETETE');
+            console.log(subTest);
+            completedTests.push({
+              "name": subTest.test_name
+              , "completedDate": new Date(subTest.complete_date).toLocaleDateString()
+            });
           } 
         }
       }

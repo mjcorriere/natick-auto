@@ -7,7 +7,7 @@
       <div class='progress'>
         <div class='progress-bar progress-bar-warning' style="width: {{pctComplete + '%'}}"></div>
       </div>
-      <h6 class='progress-bar-title'>{{pctComplete}}% Complete</h6>
+      <h6 class='progress-bar-title'>Status: {{pctComplete}}% Complete</h6>
     </div>
     <div class='panel-heading clearfix'>
       <h3 class='panel-title panel-title-lg pull-left'>Pending Tests</h3>
@@ -22,10 +22,13 @@
       <h3 class='panel-title panel-title-lg pull-left'>Completed Tests</h3>
     </div>
     <div class='list-group'>
-      <a ng-repeat='test in completedTests' href='#' class='list-group-item'>
-        <span class="fui-arrow-right pull-right"></span>
-        <h4>{{test}}</h4>
-      </a>
+      <li ng-repeat='test in completedTests' href='#' class='list-group-item'>
+        <a href="{{'#/job/' + jobid + '/' + test.name.toLowerCase().split(' ').join('')}}" class="btn btn-sm btn-primary pull-right">
+          <span class="glyphicon glyphicon-flash"></span> Re-open
+        </a>
+        <p class='completed-date'>{{test.completedDate}}</p>
+        <h4>{{test.name}}</h4>
+      </li>
     </div>
   </div>
 </div>

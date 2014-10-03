@@ -136,6 +136,15 @@ input.spec-limit {
 	font-size: 12px;
 }
 
+.completed-date {
+	float: right;
+	margin-right: 30px;
+}
+
+.progress {
+	height: 20px !important;
+}
+
 
 /**** Color Reference
  * #1ABC9C
